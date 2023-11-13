@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux/redux.dart';
@@ -37,7 +38,9 @@ class _CartPageState extends State<CartPage> {
       builder: (BuildContext context) {
         return VouchersContainer(builder: (BuildContext context, List<Profile> profiles) {
           final List<Voucher> vouchers = profiles[0].vouchers;
-          print('vouchers $vouchers');
+          if (kDebugMode) {
+            print('vouchers $vouchers');
+          }
           return AlertDialog(title: const Text('Enter voucher code'), actions: <Widget>[
             TextField(
                 controller: _textController,
@@ -193,7 +196,9 @@ class _CartPageState extends State<CartPage> {
                                     title: Row(
                                       children: <Widget>[
                                         Text(
-                                          isVoucherApplied ? '% ${total - discountAmount + transportFee} RON' : '${total + transportFee} RON',
+                                          isVoucherApplied
+                                              ? '% ${total - discountAmount + transportFee} RON'
+                                              : '${total + transportFee} RON',
                                           style: TextStyle(fontSize: 26, color: isVoucherApplied ? Colors.red : null),
                                         ),
                                       ],

@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter_test/flutter_test.dart';
 import 'package:e_commerce_app/src/data/products_api.dart';
 import 'package:e_commerce_app/src/models/index.dart';
+import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
 // ignore_for_file: avoid_implementing_value_types

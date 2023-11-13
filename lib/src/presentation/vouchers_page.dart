@@ -54,18 +54,25 @@ class _VouchersPageState extends State<VouchersPage> {
                                 child: Column(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: <Widget>[
-                                Text('# ${vouchers[index].title} \n ${vouchers[index].discount} LEI', style: const TextStyle(fontSize: 32, color: Colors.white, fontWeight: FontWeight.w900),textAlign: TextAlign.center,),
+                                Text(
+                                  '# ${vouchers[index].title} \n ${vouchers[index].discount} LEI',
+                                  style:
+                                      const TextStyle(fontSize: 32, color: Colors.white, fontWeight: FontWeight.w900),
+                                  textAlign: TextAlign.center,
+                                ),
                                 const Divider(color: Colors.white54, height: 2),
                               ],
                             )),
                           ),
-                          secondChild: GestureDetector(onTap: () {
-                            Navigator.pushNamed(context, '/cart');
-                          },
-                          child: const Padding(
-                            padding: EdgeInsets.all(8.0),
-                            child: Text('Apply voucher before end of year', style: TextStyle(fontSize: 16, color: Colors.white, fontWeight: FontWeight.w900)),
-                          )),
+                          secondChild: GestureDetector(
+                              onTap: () {
+                                Navigator.pushNamed(context, '/cart');
+                              },
+                              child: const Padding(
+                                padding: EdgeInsets.all(8.0),
+                                child: Text('Apply voucher before end of year',
+                                    style: TextStyle(fontSize: 16, color: Colors.white, fontWeight: FontWeight.w900)),
+                              )),
                           backgroundColor: Colors.pink.shade200,
                         )
                       ],

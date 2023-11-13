@@ -17,10 +17,10 @@ class GenerateProfile with _$GenerateProfile {
 
   @Implements<StopAction>()
   const factory GenerateProfile.error(
-      Object error,
-      StackTrace stackTrace, [
-        @Default(_kGenerateProfilePendingId) String pendingId,
-      ]) = GenerateProfileError;
+    Object error,
+    StackTrace stackTrace, [
+    @Default(_kGenerateProfilePendingId) String pendingId,
+  ]) = GenerateProfileError;
 
   static String get pendingKey => _kGenerateProfilePendingId;
 }

@@ -18,10 +18,10 @@ class GenerateVoucher with _$GenerateVoucher {
 
   @Implements<StopAction>()
   const factory GenerateVoucher.error(
-      Object error,
-      StackTrace stackTrace, [
-        @Default(_kGenerateVoucherPendingId) String pendingId,
-      ]) = GenerateVoucherError;
+    Object error,
+    StackTrace stackTrace, [
+    @Default(_kGenerateVoucherPendingId) String pendingId,
+  ]) = GenerateVoucherError;
 
   static String get pendingKey => _kGenerateVoucherPendingId;
 }

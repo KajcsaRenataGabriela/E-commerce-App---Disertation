@@ -1,7 +1,7 @@
-import 'package:flutter_test/flutter_test.dart';
 import 'package:e_commerce_app/src/actions/index.dart';
 import 'package:e_commerce_app/src/models/index.dart';
 import 'package:e_commerce_app/src/reducer/auth_reducer.dart';
+import 'package:flutter_test/flutter_test.dart';
 
 Future<void> main() async {
   late AuthState state;

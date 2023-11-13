@@ -120,40 +120,52 @@ class _ProfilePageState extends State<ProfilePage> {
                                 style: const TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold),
                               ),
                             ),
-                             OrdersContainer(builder: (BuildContext context, List<Order> orders) {
-                               double sum = 0;
-                               for (final Order order in orders) {
-                                 for (final Product product in order.products) {
-                                   sum = sum + product.price;
-                                 }
-                               }
-                               final int roundSum = sum.floor();
-                            return Column(children: <Widget>[Padding(
-                              padding: const EdgeInsets.all(16),
-                              child:  GFProgressBar(
-                                radius: 10,
-                                animation: true,
-                                animateFromLastPercentage: true,
-                                animationDuration: 800,
-                                percentage: roundSum>1500 ? 1.0 : roundSum > 500 ? 0.7 : roundSum == 0 ? 0.05 : 0.2,
-                                backgroundColor : Colors.grey.shade400,
-                                progressBarColor: Colors.pinkAccent,
-                              )
-                            ),
-                            Padding(
-                                padding: const EdgeInsets.only(bottom: 16),
-                                child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                    children: <Widget>[
-                                      Text(roundSum>1500 ? 'DIAMOND' : roundSum > 500 ? 'GOLD': 'SILVER',
-                                          style: const TextStyle(
-                                              fontSize: 20.0, fontWeight: FontWeight.bold, color: Colors.pinkAccent)),
-                                      Text('$roundSum POINTS',
-                                          style: const TextStyle(
-                                              fontSize: 20.0, fontWeight: FontWeight.bold, color: Colors.pinkAccent)),
-                                    ],
-                                  )
-                                )]);})
+                            OrdersContainer(builder: (BuildContext context, List<Order> orders) {
+                              double sum = 0;
+                              for (final Order order in orders) {
+                                for (final Product product in order.products) {
+                                  sum = sum + product.price;
+                                }
+                              }
+                              final int roundSum = sum.floor();
+                              return Column(children: <Widget>[
+                                Padding(
+                                    padding: const EdgeInsets.all(16),
+                                    child: GFProgressBar(
+                                      radius: 10,
+                                      animation: true,
+                                      animateFromLastPercentage: true,
+                                      animationDuration: 800,
+                                      percentage: roundSum > 1500
+                                          ? 1.0
+                                          : roundSum > 500
+                                              ? 0.7
+                                              : roundSum == 0
+                                                  ? 0.05
+                                                  : 0.2,
+                                      backgroundColor: Colors.grey.shade400,
+                                      progressBarColor: Colors.pinkAccent,
+                                    )),
+                                Padding(
+                                    padding: const EdgeInsets.only(bottom: 16),
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                      children: <Widget>[
+                                        Text(
+                                            roundSum > 1500
+                                                ? 'DIAMOND'
+                                                : roundSum > 500
+                                                    ? 'GOLD'
+                                                    : 'SILVER',
+                                            style: const TextStyle(
+                                                fontSize: 20.0, fontWeight: FontWeight.bold, color: Colors.pinkAccent)),
+                                        Text('$roundSum POINTS',
+                                            style: const TextStyle(
+                                                fontSize: 20.0, fontWeight: FontWeight.bold, color: Colors.pinkAccent)),
+                                      ],
+                                    ))
+                              ]);
+                            })
                           ],
                         ),
                       ),
@@ -172,7 +184,10 @@ class _ProfilePageState extends State<ProfilePage> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: const <Widget>[
                           Text('Your orders', style: TextStyle(fontSize: 26)),
-                          Icon(Icons.shopping_cart_outlined, size: 26,)
+                          Icon(
+                            Icons.shopping_cart_outlined,
+                            size: 26,
+                          )
                         ],
                       ),
                     ),
@@ -187,7 +202,10 @@ class _ProfilePageState extends State<ProfilePage> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: const <Widget>[
                           Text('Your vouchers', style: TextStyle(fontSize: 26)),
-                          Icon(Icons.discount_outlined, size: 26,)
+                          Icon(
+                            Icons.discount_outlined,
+                            size: 26,
+                          )
                         ],
                       ),
                     ),
@@ -202,7 +220,10 @@ class _ProfilePageState extends State<ProfilePage> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: const <Widget>[
                           Text('Contact us', style: TextStyle(fontSize: 26)),
-                          Icon(Icons.contact_page_outlined, size: 26,)
+                          Icon(
+                            Icons.contact_page_outlined,
+                            size: 26,
+                          )
                         ],
                       ),
                     ),
@@ -218,7 +239,10 @@ class _ProfilePageState extends State<ProfilePage> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: const <Widget>[
                           Text('Language', style: TextStyle(fontSize: 26)),
-                          Icon(Icons.language_outlined, size: 26,)
+                          Icon(
+                            Icons.language_outlined,
+                            size: 26,
+                          )
                         ],
                       ),
                     ),
@@ -233,7 +257,10 @@ class _ProfilePageState extends State<ProfilePage> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: const <Widget>[
                           Text('Logout', style: TextStyle(fontSize: 26)),
-                          Icon(Icons.logout, size: 26,)
+                          Icon(
+                            Icons.logout,
+                            size: 26,
+                          )
                         ],
                       ),
                     ),

@@ -133,9 +133,9 @@ class HomePage extends StatelessWidget {
                     ),
             ),
             body: VendorsContainer(builder: (BuildContext context, List<Vendor> vendors) {
-              if(products.isEmpty){
+              if (products.isEmpty) {
                 return const Center(child: Text('No products in this category :('));
-              }else {
+              } else {
                 return ListView.separated(
                     itemBuilder: (BuildContext context, int index) {
                       final Product product = products[index];
@@ -160,21 +160,19 @@ class HomePage extends StatelessWidget {
                                   ),
                                   Padding(
                                     padding: const EdgeInsets.only(left: 8),
-                                    child: Column(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        children: <Widget>[
-                                          Text(
-                                            product.title,
-                                            style: const TextStyle(
-                                              fontSize: 20.0,
-                                            ),
-                                          ),
-                                          const SizedBox(height: 10),
-                                          Padding(
-                                            padding: const EdgeInsets.all(4.0),
-                                            child: Text('vendor: ${vendor?.name}'),
-                                          ),
-                                        ]),
+                                    child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: <Widget>[
+                                      Text(
+                                        product.title,
+                                        style: const TextStyle(
+                                          fontSize: 20.0,
+                                        ),
+                                      ),
+                                      const SizedBox(height: 10),
+                                      Padding(
+                                        padding: const EdgeInsets.all(4.0),
+                                        child: Text('vendor: ${vendor?.name}'),
+                                      ),
+                                    ]),
                                   ),
                                 ],
                               ),

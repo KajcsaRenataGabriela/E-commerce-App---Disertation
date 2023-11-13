@@ -46,15 +46,17 @@ class ContactPage extends StatelessWidget {
                           onPressed: () async {
                             final List<MailApp> apps = await OpenMailApp.getMailApps();
                             if (apps.isEmpty) {
+                              //ignore: use_build_context_synchronously
                               showNoMailAppsDialog(context);
                             } else {
+                              //ignore: use_build_context_synchronously
                               showDialog(
                                 context: context,
-                                builder: (context) {
+                                builder: (BuildContext context) {
                                   return MailAppPickerDialog(
                                     mailApps: apps,
                                     emailContent: EmailContent(
-                                      to: [
+                                      to: <String>[
                                         'kajcsarenata@gmail.com',
                                       ],
                                       subject: 'I have a question!',
@@ -64,7 +66,7 @@ class ContactPage extends StatelessWidget {
                                 },
                               );
                             }
-                            },
+                          },
                           child: Row(
                             children: <Widget>[
                               const Icon(
