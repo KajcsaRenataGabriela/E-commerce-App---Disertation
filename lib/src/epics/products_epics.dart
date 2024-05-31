@@ -16,7 +16,18 @@ class ProductsEpics implements EpicClass<AppState> {
       TypedEpic<AppState, ListCategoryStart>(_listCategoryStart).call,
       TypedEpic<AppState, ListProductsStart>(_listProductsStart).call,
       TypedEpic<AppState, ListVendorsStart>(_listVendorsStart).call,
+      TypedEpic<AppState, CreateProductStart>(_createProductStart).call,
     ])(actions, store);
+  }
+
+  Stream<dynamic> _createProductStart(Stream<CreateProductStart> actions, EpicStore<AppState> store) {
+    return actions.flatMap((CreateProductStart action) {
+      return Stream<void>.value(null)
+          .asyncMap((_) => _api.createProduct(title: action.title, description: action.description, price: action.price, categoryId: action.categoryId, image: action.image, vendorId: action.vendorId, id: action.id))
+          .mapTo(const CreateUser.successful())
+          .onErrorReturnWith((Object error, StackTrace stackTrace) => CreateUser.error(error, stackTrace))
+          .doOnData(action.result);
+    });
   }
 
   Stream<dynamic> _listCategoryStart(Stream<ListCategoryStart> actions, EpicStore<AppState> store) {

@@ -32,7 +32,9 @@ class _LoginPageState extends State<LoginPage> {
 
   void _onResult(dynamic action) {
     if (action is LoginUserSuccessful) {
-      Navigator.pushReplacementNamed(context, '/');
+      _email.text.contains('@philips.com') ?
+        Navigator.pushReplacementNamed(context, '/seller')
+          : Navigator.pushReplacementNamed(context, '/');
     } else if (action is LoginUserError) {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
         content: Text('${action.error}'),

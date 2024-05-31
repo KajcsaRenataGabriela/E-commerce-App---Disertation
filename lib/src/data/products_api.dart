@@ -24,6 +24,20 @@ class ProductsApi {
         .toList();
   }
 
+  Future<void> createProduct({required String title, required String description, required double price, required String categoryId, required String image, required String vendorId, required String id}) async {
+    final Map<String, dynamic> data = {
+      'title': title,
+      'description': description,
+      'price': price,
+      'categoryId': categoryId,
+      'image': image,
+      'vendorId': vendorId,
+      'id': id
+    };
+    
+    await _firestore.collection('products').doc(id).set(data);
+  }
+
   Future<List<Vendor>> listVendors() async {
     final QuerySnapshot<Map<String, dynamic>> snapshot = await _firestore.collection('vendors').get();
 

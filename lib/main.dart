@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:e_commerce_app/src/presentation/vendors_items_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -28,6 +29,7 @@ import 'src/presentation/login_page.dart';
 import 'src/presentation/orders_page.dart';
 import 'src/presentation/product_page.dart';
 import 'src/presentation/profile_page.dart';
+import 'src/presentation/sellers_page.dart';
 import 'src/presentation/vouchers_page.dart';
 import 'src/reducer/reducer.dart';
 
@@ -76,11 +78,24 @@ class MyApp extends StatelessWidget {
         ),
         routes: <String, WidgetBuilder>{
           '/': (BuildContext context) {
+
             return UserContainer(builder: (BuildContext context, AppUser? user) {
               if (user == null) {
                 return const LoginPage();
               } else {
-                return const HomePage();
+                final String currentUserEmail = store.state.auth.user!.email;
+                final List<Vendor> vendors = store.state.products.vendors.toList();
+                bool isSeller = false;
+                if(vendors.isNotEmpty){
+                  final Vendor vendor = vendors.firstWhere(
+                        (Vendor element) => element.email == currentUserEmail,
+                    orElse: () => const Vendor(id: '0', name: 'name', image: 'image', description: 'description', email: 'NOT_A_COMPANY_EMAIL'), // or provide a default Vendor instance
+                  );
+                  if(vendor.email!='NOT_A_COMPANY_EMAIL') {
+                    isSeller = true;
+                  }
+                }
+                return isSeller ? const SellersPage() : const HomePage();
               }
             });
           },
@@ -92,6 +107,8 @@ class MyApp extends StatelessWidget {
           '/profile': (BuildContext context) => const ProfilePage(),
           '/orders': (BuildContext context) => const OrdersPage(),
           '/vouchers': (BuildContext context) => const VouchersPage(),
+          '/seller': (BuildContext context) => const SellersPage(),
+          '/vendorsItems': (BuildContext context) => const VendorsItemsPage(),
         },
       ),
     );

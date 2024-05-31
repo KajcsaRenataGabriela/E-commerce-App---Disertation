@@ -7,6 +7,7 @@ class AppUser with _$AppUser {
     required String uid,
     required String email,
     required String displayName,
+    @Default('customer') String role,
     @Default(0) int points,
     String? pictureUrl,
   }) = AppUser$;
