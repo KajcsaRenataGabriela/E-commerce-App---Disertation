@@ -1,16 +1,27 @@
-# e_commerce_app
+# My Emag
+An e-commerce Flutter project that is inspired by emag.ro
 
-A new Flutter project.
+Perks:
+* **redux**
+* freezed annotations
+* used analysis_options
+* firebase + firestore
+* pending actions implemented
+* create user + login user + logout
+* products based on categories with vendors
+* shopping cart
+* account profile
+* unit tests
+* order functionality (with history)
+* seller role option (listing items and viewing listed items)
+* vouchers
+* gamification system with points for benefits for loyal customers
+* profile picture change option
+* contact us (direct phone call and direct email)
 
-## Getting Started
+Here is a video of the app:
 
-This project is a starting point for a Flutter application.
+https://github.com/KajcsaRenataGabriela/MyEmag/assets/67558003/6f9d965c-3135-4ab6-872f-1458075b3fd6
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+* can authenticate error appears because I used biometrics checker and recorded on emulator (only real devices, that have biometrics should be able to order in my app)
