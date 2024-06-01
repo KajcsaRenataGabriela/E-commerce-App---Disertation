@@ -33,9 +33,9 @@ class ProductsEpics implements EpicClass<AppState> {
               image: action.image,
               vendorId: action.vendorId,
               id: action.id))
-          .mapTo(const CreateUser.successful())
+          .mapTo(const CreateProduct.successful())
           .onErrorReturnWith((Object error, StackTrace stackTrace) =>
-              CreateUser.error(error, stackTrace))
+              CreateProduct.error(error, stackTrace))
           .doOnData(action.result);
     });
   }

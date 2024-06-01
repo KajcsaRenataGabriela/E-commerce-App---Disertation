@@ -21,7 +21,7 @@ class _SellersPageState extends State<SellersPage> {
   final TextEditingController _price = TextEditingController();
   final TextEditingController _image = TextEditingController();
 
-  Category? _selectedCategory;
+  String _selectedCategoryId = '5oRLWmzGl1WzGjL2g5RW'; // large appliances
   List<Vendor> _vendors = <Vendor>[];
   bool _isLoading = true;
 
@@ -46,13 +46,22 @@ class _SellersPageState extends State<SellersPage> {
     super.dispose();
   }
 
+  void _showMessage(String message, BuildContext context) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(message),
+        backgroundColor: Colors.lightGreen,
+      ),
+    );
+  }
+
   void _onNext() {
     _vendors = _store.state.products.vendors.toList();
 
     final String title = _title.text;
     final String description = _description.text;
     final double price = double.parse(_price.text);
-    final String category = _selectedCategory!.id;
+    final String category = _selectedCategoryId;
     final String image = _image.text;
     final String vendorId = _vendors
         .firstWhere(
@@ -78,8 +87,17 @@ class _SellersPageState extends State<SellersPage> {
         result: _onResult));
   }
 
+  void _resetFields() {
+    _title.clear();
+    _description.clear();
+    _price.clear();
+    _image.clear();
+  }
+
   void _onResult(dynamic action) {
     if (action is CreateProductSuccessful) {
+      _resetFields();
+      _showMessage('Successfully listed item.', context);
       return;
     } else if (action is CreateUserError) {
       ScaffoldMessenger.of(context)
@@ -165,7 +183,8 @@ class _SellersPageState extends State<SellersPage> {
                                           }).toList(),
                                           onChanged: (Category? category) {
                                             setState(() {
-                                              _selectedCategory = category;
+                                              _selectedCategoryId =
+                                                  category!.id;
                                             });
                                             StoreProvider.of<AppState>(context)
                                                 .dispatch(
