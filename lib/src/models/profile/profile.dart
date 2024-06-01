@@ -11,7 +11,8 @@ class Profile with _$Profile implements Comparable<Profile> {
     @Default(<Voucher>[]) List<Voucher> vouchers,
   }) = Profile$;
 
-  factory Profile.fromJson(Map<dynamic, dynamic> json) => _$ProfileFromJson(Map<String, dynamic>.from(json));
+  factory Profile.fromJson(Map<dynamic, dynamic> json) =>
+      _$ProfileFromJson(Map<String, dynamic>.from(json));
 
   const Profile._();
 

@@ -27,14 +27,16 @@ class _CreateUserPageState extends State<CreateUserPage> {
     if (password.length < 6) {
       return;
     }
-    StoreProvider.of<AppState>(context).dispatch(CreateUserStart(email: email, password: password, result: _onResult));
+    StoreProvider.of<AppState>(context).dispatch(
+        CreateUserStart(email: email, password: password, result: _onResult));
   }
 
   void _onResult(dynamic action) {
     if (action is CreateUserSuccessful) {
       Navigator.pushReplacementNamed(context, '/');
     } else if (action is CreateUserError) {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('${action.error}')));
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text('${action.error}')));
     }
   }
 
@@ -97,13 +99,15 @@ class _CreateUserPageState extends State<CreateUserPage> {
                               TextField(
                                 controller: _email,
                                 keyboardType: TextInputType.emailAddress,
-                                decoration: const InputDecoration(hintText: 'Email'),
+                                decoration:
+                                    const InputDecoration(hintText: 'Email'),
                               ),
                               TextField(
                                 controller: _password,
                                 obscureText: true,
                                 keyboardType: TextInputType.visiblePassword,
-                                decoration: const InputDecoration(hintText: 'Password'),
+                                decoration:
+                                    const InputDecoration(hintText: 'Password'),
                               ),
                             ],
                           ),
@@ -117,7 +121,8 @@ class _CreateUserPageState extends State<CreateUserPage> {
                           FloatingActionButton.extended(
                             label: const Text(
                               'Sign up TODAY',
-                              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24.0),
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 24.0),
                             ),
                             // <-- Text
                             backgroundColor: Colors.pink,

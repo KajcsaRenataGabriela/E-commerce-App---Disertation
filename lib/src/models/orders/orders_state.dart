@@ -6,5 +6,6 @@ class OrdersState with _$OrdersState {
     @Default(<Order>[]) List<Order> orders,
   }) = OrdersState$;
 
-  factory OrdersState.fromJson(Map<dynamic, dynamic> json) => _$OrdersStateFromJson(Map<String, dynamic>.from(json));
+  factory OrdersState.fromJson(Map<dynamic, dynamic> json) =>
+      _$OrdersStateFromJson(Map<String, dynamic>.from(json));
 }

@@ -68,7 +68,15 @@ _$ProductsState$ _$$ProductsState$FromJson(Map<String, dynamic> json) =>
             (k, e) => MapEntry(k, Product.fromJson(e as Map<String, dynamic>)),
           ) ??
           const <String, Product>{},
+      allProducts: (json['allProducts'] as Map<String, dynamic>?)?.map(
+            (k, e) => MapEntry(k, Product.fromJson(e as Map<String, dynamic>)),
+          ) ??
+          const <String, Product>{},
       productIds: (json['productIds'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList() ??
+          const <String>[],
+      allProductIds: (json['allProductIds'] as List<dynamic>?)
               ?.map((e) => e as String)
               .toList() ??
           const <String>[],
@@ -87,7 +95,9 @@ _$ProductsState$ _$$ProductsState$FromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$$ProductsState$ToJson(_$ProductsState$ instance) =>
     <String, dynamic>{
       'products': instance.products,
+      'allProducts': instance.allProducts,
       'productIds': instance.productIds,
+      'allProductIds': instance.allProductIds,
       'categories': instance.categories,
       'vendors': instance.vendors,
       'selectedCategoryId': instance.selectedCategoryId,

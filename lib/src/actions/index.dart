@@ -14,6 +14,7 @@ part 'index.freezed.dart';
 part 'products/create_product.dart';
 part 'products/list_category.dart';
 part 'products/list_products.dart';
+part 'products/list_all_products.dart';
 part 'products/list_vendors.dart';
 part 'products/set.dart';
 part 'profiles/generate_profile.dart';

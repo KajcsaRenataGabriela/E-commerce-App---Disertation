@@ -17,13 +17,17 @@ class ProfilesEpics implements EpicClass<AppState> {
     ])(actions, store);
   }
 
-  Stream<dynamic> _listenToProfiles(Stream<dynamic> actions, EpicStore<AppState> store) {
-    return actions.whereType<ListenToProfilesStart>().flatMap((ListenToProfilesStart action) {
+  Stream<dynamic> _listenToProfiles(
+      Stream<dynamic> actions, EpicStore<AppState> store) {
+    return actions
+        .whereType<ListenToProfilesStart>()
+        .flatMap((ListenToProfilesStart action) {
       return Stream<void>.value(null)
           .flatMap((_) => _api.listenToProfiles(store.state.auth.user!.uid))
           .takeUntil(actions.whereType<ListenToProfilesDone>())
           .map((List<Profile$> profiles) => ListenToProfiles.event(profiles))
-          .onErrorReturnWith((Object error, StackTrace stackTrace) => ListenToProfiles.error(error, stackTrace));
+          .onErrorReturnWith((Object error, StackTrace stackTrace) =>
+              ListenToProfiles.error(error, stackTrace));
     });
   }
 }

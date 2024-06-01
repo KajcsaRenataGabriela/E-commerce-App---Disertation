@@ -43,8 +43,10 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return UserContainer(builder: (BuildContext context, AppUser? user) {
-      return CategoriesContainer(builder: (BuildContext context, List<Category> categories) {
-        return HomeProductsContainer(builder: (BuildContext context, List<Product> products) {
+      return CategoriesContainer(
+          builder: (BuildContext context, List<Category> categories) {
+        return HomeProductsContainer(
+            builder: (BuildContext context, List<Product> products) {
           return Scaffold(
             appBar: AppBar(
               leading: IconButton(
@@ -56,7 +58,8 @@ class HomePage extends StatelessWidget {
               actions: <Widget>[
                 CartContainer(
                   builder: (BuildContext context, Cart cart) {
-                    final int totalNumberOfItems = cart.items.fold(0, (int sum, CartItem item) {
+                    final int totalNumberOfItems =
+                        cart.items.fold(0, (int sum, CartItem item) {
                       return sum + item.quantity;
                     });
                     return Stack(
@@ -81,7 +84,9 @@ class HomePage extends StatelessWidget {
                             padding: const EdgeInsets.all(4),
                             child: Text(
                               '$totalNumberOfItems',
-                              style: const TextStyle(color: Colors.pink, fontWeight: FontWeight.bold),
+                              style: const TextStyle(
+                                  color: Colors.pink,
+                                  fontWeight: FontWeight.bold),
                             ),
                           ),
                         )
@@ -91,7 +96,8 @@ class HomePage extends StatelessWidget {
                 ),
                 IconButton(
                   onPressed: () {
-                    StoreProvider.of<AppState>(context).dispatch(const LogoutUserStart());
+                    StoreProvider.of<AppState>(context)
+                        .dispatch(const LogoutUserStart());
                     Navigator.pushReplacementNamed(context, '/login');
                   },
                   icon: const Icon(Icons.power_settings_new_sharp),
@@ -104,15 +110,19 @@ class HomePage extends StatelessWidget {
                       child: SizedBox(
                         height: 56,
                         child: SelectedCategoryContainer(
-                          builder: (BuildContext context, Category selectedCategory) {
+                          builder: (BuildContext context,
+                              Category selectedCategory) {
                             return ListView(
                               scrollDirection: Axis.horizontal,
                               children: categories.map((Category category) {
                                 return Theme(
                                   data: ThemeData(canvasColor: Colors.black54),
                                   child: ChoiceChip(
-                                    backgroundColor: Colors.white.withOpacity(0.8),
-                                    labelStyle: const TextStyle(color: Colors.pink, fontWeight: FontWeight.w900),
+                                    backgroundColor:
+                                        Colors.white.withOpacity(0.8),
+                                    labelStyle: const TextStyle(
+                                        color: Colors.pink,
+                                        fontWeight: FontWeight.w900),
                                     selectedColor: Colors.white,
                                     label: Text(category.title),
                                     selected: selectedCategory == category,
@@ -120,7 +130,8 @@ class HomePage extends StatelessWidget {
                                       if (selected) {
                                         StoreProvider.of<AppState>(context)
                                           ..dispatch(SetCategory(category.id))
-                                          ..dispatch(ListProducts.start(category.id));
+                                          ..dispatch(
+                                              ListProducts.start(category.id));
                                       }
                                     },
                                   ),
@@ -132,18 +143,22 @@ class HomePage extends StatelessWidget {
                       ),
                     ),
             ),
-            body: VendorsContainer(builder: (BuildContext context, List<Vendor> vendors) {
+            body: VendorsContainer(
+                builder: (BuildContext context, List<Vendor> vendors) {
               if (products.isEmpty) {
-                return const Center(child: Text('No products in this category :('));
+                return const Center(
+                    child: Text('No products in this category :('));
               } else {
                 return ListView.separated(
                     itemBuilder: (BuildContext context, int index) {
                       final Product product = products[index];
-                      final Vendor? vendor = vendors.firstWhereOrNull((Vendor vendor) => vendor.id == product.vendorId);
+                      final Vendor? vendor = vendors.firstWhereOrNull(
+                          (Vendor vendor) => vendor.id == product.vendorId);
                       return Card(
                         child: GestureDetector(
                           onTap: () {
-                            StoreProvider.of<AppState>(context).dispatch(SetProduct(product.id));
+                            StoreProvider.of<AppState>(context)
+                                .dispatch(SetProduct(product.id));
                             Navigator.pushNamed(context, '/product');
                           },
                           child: Row(
@@ -160,19 +175,23 @@ class HomePage extends StatelessWidget {
                                   ),
                                   Padding(
                                     padding: const EdgeInsets.only(left: 8),
-                                    child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: <Widget>[
-                                      Text(
-                                        product.title,
-                                        style: const TextStyle(
-                                          fontSize: 20.0,
-                                        ),
-                                      ),
-                                      const SizedBox(height: 10),
-                                      Padding(
-                                        padding: const EdgeInsets.all(4.0),
-                                        child: Text('vendor: ${vendor?.name}'),
-                                      ),
-                                    ]),
+                                    child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: <Widget>[
+                                          Text(
+                                            product.title,
+                                            style: const TextStyle(
+                                              fontSize: 20.0,
+                                            ),
+                                          ),
+                                          const SizedBox(height: 10),
+                                          Padding(
+                                            padding: const EdgeInsets.all(4.0),
+                                            child:
+                                                Text('vendor: ${vendor?.name}'),
+                                          ),
+                                        ]),
                                   ),
                                 ],
                               ),
@@ -182,7 +201,9 @@ class HomePage extends StatelessWidget {
                                     color: Colors.pinkAccent,
                                   ),
                                   onPressed: () {
-                                    StoreProvider.of<AppState>(context).dispatch(UpdateCart(product.id, add: true));
+                                    StoreProvider.of<AppState>(context)
+                                        .dispatch(
+                                            UpdateCart(product.id, add: true));
                                   }),
                             ],
                           ),

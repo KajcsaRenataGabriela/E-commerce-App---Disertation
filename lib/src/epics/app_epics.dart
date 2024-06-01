@@ -16,6 +16,11 @@ class AppEpics implements EpicClass<AppState> {
 
   @override
   Stream<dynamic> call(Stream<dynamic> actions, EpicStore<AppState> store) {
-    return combineEpics(<Epic<AppState>>[_auth.call, _products.call, _orders.call, _profiles.call])(actions, store);
+    return combineEpics(<Epic<AppState>>[
+      _auth.call,
+      _products.call,
+      _orders.call,
+      _profiles.call
+    ])(actions, store);
   }
 }

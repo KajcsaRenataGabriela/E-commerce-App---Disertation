@@ -18,7 +18,8 @@ class Order with _$Order implements Comparable<Order> {
     @Default(OrderStatus.submitted) OrderStatus status,
   }) = Order$;
 
-  factory Order.fromJson(Map<dynamic, dynamic> json) => _$OrderFromJson(Map<String, dynamic>.from(json));
+  factory Order.fromJson(Map<dynamic, dynamic> json) =>
+      _$OrderFromJson(Map<String, dynamic>.from(json));
 
   const Order._();
 

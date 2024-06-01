@@ -6,5 +6,6 @@ class LogoutUser with _$LogoutUser {
 
   const factory LogoutUser.successful() = LogoutUserSuccessful;
 
-  const factory LogoutUser.error(Object error, StackTrace stacktrace) = LogoutUserError;
+  const factory LogoutUser.error(Object error, StackTrace stacktrace) =
+      LogoutUserError;
 }

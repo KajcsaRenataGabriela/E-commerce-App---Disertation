@@ -27,13 +27,14 @@ class _LoginPageState extends State<LoginPage> {
     if (password.length < 6) {
       return;
     }
-    StoreProvider.of<AppState>(context).dispatch(LoginUserStart(email: email, password: password, result: _onResult));
+    StoreProvider.of<AppState>(context).dispatch(
+        LoginUserStart(email: email, password: password, result: _onResult));
   }
 
   void _onResult(dynamic action) {
     if (action is LoginUserSuccessful) {
-      _email.text.contains('@philips.com') ?
-        Navigator.pushReplacementNamed(context, '/seller')
+      _email.text.contains('@philips.com')
+          ? Navigator.pushReplacementNamed(context, '/seller')
           : Navigator.pushReplacementNamed(context, '/');
     } else if (action is LoginUserError) {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
@@ -76,7 +77,10 @@ class _LoginPageState extends State<LoginPage> {
                           padding: EdgeInsets.only(left: 64.0, right: 64.0),
                           child: Text(
                             'LOGIN',
-                            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 54),
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 54),
                           ),
                         ),
                         const Padding(
@@ -98,13 +102,15 @@ class _LoginPageState extends State<LoginPage> {
                               TextField(
                                 controller: _email,
                                 keyboardType: TextInputType.emailAddress,
-                                decoration: const InputDecoration(hintText: 'Email'),
+                                decoration:
+                                    const InputDecoration(hintText: 'Email'),
                               ),
                               TextField(
                                 controller: _password,
                                 keyboardType: TextInputType.visiblePassword,
                                 obscureText: true,
-                                decoration: const InputDecoration(hintText: 'Password'),
+                                decoration:
+                                    const InputDecoration(hintText: 'Password'),
                               ),
                             ],
                           ),
@@ -118,7 +124,8 @@ class _LoginPageState extends State<LoginPage> {
                           FloatingActionButton.extended(
                             label: const Text(
                               'Login',
-                              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24.0),
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 24.0),
                             ), // <-- Text
                             backgroundColor: Colors.pink,
                             icon: const Icon(
@@ -130,14 +137,16 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                           const SizedBox(height: 16.0),
                           FloatingActionButton.extended(
-                            label: const Text('Create a NEW account'), // <-- Text
+                            label:
+                                const Text('Create a NEW account'), // <-- Text
                             backgroundColor: Colors.pink.shade300,
                             icon: const Icon(
                               Icons.assignment_ind,
                               size: 24.0,
                             ),
                             onPressed: () {
-                              Navigator.pushReplacementNamed(context, '/create');
+                              Navigator.pushReplacementNamed(
+                                  context, '/create');
                             },
                             heroTag: 'btn2',
                           ),

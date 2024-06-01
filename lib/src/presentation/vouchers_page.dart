@@ -56,8 +56,10 @@ class _VouchersPageState extends State<VouchersPage> {
                               children: <Widget>[
                                 Text(
                                   '# ${vouchers[index].title} \n ${vouchers[index].discount} LEI',
-                                  style:
-                                      const TextStyle(fontSize: 32, color: Colors.white, fontWeight: FontWeight.w900),
+                                  style: const TextStyle(
+                                      fontSize: 32,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.w900),
                                   textAlign: TextAlign.center,
                                 ),
                                 const Divider(color: Colors.white54, height: 2),
@@ -71,7 +73,10 @@ class _VouchersPageState extends State<VouchersPage> {
                               child: const Padding(
                                 padding: EdgeInsets.all(8.0),
                                 child: Text('Apply voucher before end of year',
-                                    style: TextStyle(fontSize: 16, color: Colors.white, fontWeight: FontWeight.w900)),
+                                    style: TextStyle(
+                                        fontSize: 16,
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w900)),
                               )),
                           backgroundColor: Colors.pink.shade200,
                         )

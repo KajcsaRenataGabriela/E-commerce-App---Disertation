@@ -6,7 +6,9 @@ class ListenToProfiles with _$ListenToProfiles {
 
   const factory ListenToProfiles.done() = ListenToProfilesDone;
 
-  const factory ListenToProfiles.event(List<Profile> profiles) = OnProfilesEvent;
+  const factory ListenToProfiles.event(List<Profile> profiles) =
+      OnProfilesEvent;
 
-  const factory ListenToProfiles.error(Object error, StackTrace stackTrace) = ListenToProfilesError;
+  const factory ListenToProfiles.error(Object error, StackTrace stackTrace) =
+      ListenToProfilesError;
 }

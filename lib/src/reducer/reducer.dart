@@ -32,9 +32,12 @@ AppState _reducer(AppState state, dynamic action) {
 }
 
 AppState _startAction(AppState state, StartAction action) {
-  return state.copyWith(pendingActions: <String>{...state.pendingActions, action.pendingId});
+  return state.copyWith(
+      pendingActions: <String>{...state.pendingActions, action.pendingId});
 }
 
 AppState _stopAction(AppState state, StopAction action) {
-  return state.copyWith(pendingActions: <String>{...state.pendingActions}..remove(action.pendingId));
+  return state.copyWith(
+      pendingActions: <String>{...state.pendingActions}
+        ..remove(action.pendingId));
 }

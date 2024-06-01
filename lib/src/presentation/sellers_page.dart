@@ -19,11 +19,10 @@ class _SellersPageState extends State<SellersPage> {
   final TextEditingController _title = TextEditingController();
   final TextEditingController _description = TextEditingController();
   final TextEditingController _price = TextEditingController();
-  final TextEditingController _category = TextEditingController();
   final TextEditingController _image = TextEditingController();
 
   Category? _selectedCategory;
-  List<Vendor> _vendors = [];
+  List<Vendor> _vendors = <Vendor>[];
   bool _isLoading = true;
 
   @override
@@ -36,7 +35,7 @@ class _SellersPageState extends State<SellersPage> {
 
   Future<void> _fetchCategories() async {
     _store.dispatch(const ListCategory.start());
-    await Future.delayed(const Duration(seconds: 2)); // Simulate a delay
+    await Future<void>.delayed(const Duration(seconds: 2)); // Simulate a delay
     setState(() {
       _isLoading = false;
     });
@@ -55,7 +54,10 @@ class _SellersPageState extends State<SellersPage> {
     final double price = double.parse(_price.text);
     final String category = _selectedCategory!.id;
     final String image = _image.text;
-    final String vendorId = _vendors.firstWhere((Vendor element) => element.email == _store.state.auth.user!.email).id;
+    final String vendorId = _vendors
+        .firstWhere(
+            (Vendor element) => element.email == _store.state.auth.user!.email)
+        .id;
     const Uuid uuid = Uuid();
     final String documentId = uuid.v4();
 
@@ -80,30 +82,31 @@ class _SellersPageState extends State<SellersPage> {
     if (action is CreateProductSuccessful) {
       return;
     } else if (action is CreateUserError) {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('${action.error}')));
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text('${action.error}')));
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    return CategoriesContainer(builder: (BuildContext context, List<Category> categories) {
+    return CategoriesContainer(
+        builder: (BuildContext context, List<Category> categories) {
       return Scaffold(
-          appBar: AppBar(
-              title: const Text('Seller'),
-              actions: <Widget>[
+          appBar: AppBar(title: const Text('Seller'), actions: <Widget>[
             IconButton(
               onPressed: () {
-                StoreProvider.of<AppState>(context).dispatch(const LogoutUserStart());
-                Navigator.pushReplacementNamed(context, '/vendorsItems');
+                Navigator.pushNamed(context, '/vendorsItems');
               },
               icon: const Icon(Icons.list_alt_outlined),
             ),
-                IconButton(
-                  onPressed: () {
-                    Navigator.pushReplacementNamed(context, '/login');
-                  },
-                  icon: const Icon(Icons.power_settings_new_sharp),
-              ),
+            IconButton(
+              onPressed: () {
+                StoreProvider.of<AppState>(context)
+                    .dispatch(const LogoutUserStart());
+                Navigator.pushReplacementNamed(context, '/login');
+              },
+              icon: const Icon(Icons.power_settings_new_sharp),
+            ),
           ]),
           body: _isLoading
               ? const Center(
@@ -112,82 +115,96 @@ class _SellersPageState extends State<SellersPage> {
               : SingleChildScrollView(
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: <Widget>[
-                      Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(24.0),
-                          color: Colors.white.withOpacity(0.5),
-                        ),
-                        padding: const EdgeInsets.all(24.0),
-                        child: Column(
-                          children: <Widget>[
-                            TextField(
-                              controller: _title,
-                              keyboardType: TextInputType.visiblePassword,
-                              decoration: const InputDecoration(hintText: 'Title'),
+                    child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(24.0),
+                              color: Colors.white.withOpacity(0.5),
                             ),
-                            const SizedBox(height: 16.0),
-                            TextField(
-                              maxLines: 5,
-                              controller: _description,
-                              keyboardType: TextInputType.visiblePassword,
-                              decoration: const InputDecoration(hintText: 'Description'),
+                            padding: const EdgeInsets.all(24.0),
+                            child: Column(
+                              children: <Widget>[
+                                TextField(
+                                  controller: _title,
+                                  keyboardType: TextInputType.visiblePassword,
+                                  decoration:
+                                      const InputDecoration(hintText: 'Title'),
+                                ),
+                                const SizedBox(height: 16.0),
+                                TextField(
+                                  maxLines: 5,
+                                  controller: _description,
+                                  keyboardType: TextInputType.visiblePassword,
+                                  decoration: const InputDecoration(
+                                      hintText: 'Description'),
+                                ),
+                                const SizedBox(height: 16.0),
+                                TextField(
+                                  controller: _price,
+                                  keyboardType: TextInputType.number,
+                                  decoration:
+                                      const InputDecoration(hintText: 'Price'),
+                                ),
+                                const SizedBox(height: 16.0),
+                                SelectedCategoryContainer(builder:
+                                    (BuildContext context,
+                                        Category selectedCategory) {
+                                  return categories.isNotEmpty
+                                      ? DropdownButton<Category>(
+                                          hint: const Text('Select Category',
+                                              style: TextStyle(fontSize: 12)),
+                                          value: selectedCategory,
+                                          items: categories
+                                              .map((Category category) {
+                                            return DropdownMenuItem<Category>(
+                                              value: category,
+                                              child: Text(category.title),
+                                            );
+                                          }).toList(),
+                                          onChanged: (Category? category) {
+                                            setState(() {
+                                              _selectedCategory = category;
+                                            });
+                                            StoreProvider.of<AppState>(context)
+                                                .dispatch(
+                                                    SetCategory(category?.id));
+                                          },
+                                          isExpanded: true,
+                                        )
+                                      : const Center();
+                                }),
+                                const SizedBox(height: 16.0),
+                                TextField(
+                                  controller: _image,
+                                  keyboardType: TextInputType.visiblePassword,
+                                  decoration: const InputDecoration(
+                                      hintText: 'Image URL HTTPS'),
+                                ),
+                              ],
                             ),
-                            const SizedBox(height: 16.0),
-                            TextField(
-                              controller: _price,
-                              keyboardType: TextInputType.number,
-                              decoration: const InputDecoration(hintText: 'Price'),
-                            ),
-                            const SizedBox(height: 16.0),
-                            SelectedCategoryContainer(builder: (BuildContext context, Category selectedCategory) {
-                              return categories.isNotEmpty
-                                  ? DropdownButton<Category>(
-                                      hint: const Text('Select Category', style: TextStyle(fontSize: 12)),
-                                      value: selectedCategory,
-                                      items: categories.map((Category category) {
-                                        return DropdownMenuItem<Category>(
-                                          value: category,
-                                          child: Text(category.title),
-                                        );
-                                      }).toList(),
-                                      onChanged: (Category? category) {
-                                        setState(() {
-                                          _selectedCategory = category;
-                                        });
-                                        StoreProvider.of<AppState>(context).dispatch(SetCategory(category?.id));
-                                      },
-                                      isExpanded: true,
-                                    )
-                                  : const Center();
-                            }),
-                            const SizedBox(height: 16.0),
-                            TextField(
-                              controller: _image,
-                              keyboardType: TextInputType.visiblePassword,
-                              decoration: const InputDecoration(hintText: 'Image URL HTTPS'),
-                            ),
-                          ],
-                        ),
-                      ),
-                      const SizedBox(height: 32.0),
-                      Center(
-                        child: FloatingActionButton.extended(
-                          label: const Text(
-                            'List item',
-                            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24.0),
                           ),
-                          // <-- Text
-                          backgroundColor: Colors.pink,
-                          icon: const Icon(
-                            Icons.ads_click,
-                            size: 24.0,
+                          const SizedBox(height: 32.0),
+                          Center(
+                            child: FloatingActionButton.extended(
+                              label: const Text(
+                                'List item',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 24.0),
+                              ),
+                              // <-- Text
+                              backgroundColor: Colors.pink,
+                              icon: const Icon(
+                                Icons.ads_click,
+                                size: 24.0,
+                              ),
+                              onPressed: _onNext,
+                              heroTag: 'listItemButton',
+                            ),
                           ),
-                          onPressed: _onNext,
-                          heroTag: 'listItemButton',
-                        ),
-                      ),
-                    ]),
+                        ]),
                   ),
                 ));
     });

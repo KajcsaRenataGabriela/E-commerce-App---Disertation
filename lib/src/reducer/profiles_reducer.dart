@@ -3,7 +3,8 @@ import 'package:redux/redux.dart';
 import '../actions/index.dart';
 import '../models/index.dart';
 
-Reducer<ProfilesState> profileReducer = combineReducers(<Reducer<ProfilesState>>[
+Reducer<ProfilesState> profileReducer =
+    combineReducers(<Reducer<ProfilesState>>[
   TypedReducer<ProfilesState, OnProfilesEvent>(_onProfileEvent).call,
 ]);
 

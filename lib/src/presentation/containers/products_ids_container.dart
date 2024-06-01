@@ -10,7 +10,8 @@ class HomeProductsContainer extends StatelessWidget {
     return StoreConnector<AppState, List<Product>>(
       converter: (Store<AppState> store) {
         return store.state.products.productIds
-            .map((String productId) => store.state.products.products[productId]!)
+            .map(
+                (String productId) => store.state.products.products[productId]!)
             .toList();
       },
       builder: builder,

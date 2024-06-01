@@ -21,7 +21,8 @@ class AuthEpics implements EpicClass<AppState> {
     ])(actions, store);
   }
 
-  Stream<void> _initializeAppStart(Stream<InitializeAppStart> actions, EpicStore<AppState> store) {
+  Stream<void> _initializeAppStart(
+      Stream<InitializeAppStart> actions, EpicStore<AppState> store) {
     return actions.flatMap((InitializeAppStart action) {
       return Stream<void>.value(null)
           .flatMap((_) => _api.currentUser())
@@ -34,47 +35,62 @@ class AuthEpics implements EpicClass<AppState> {
 
         return <dynamic>[
           InitializeAppSuccessful(users.last),
-          if (hasLoggedIn) ...<dynamic>[const ListCategory.start(), const ListVendors.start()],
+          if (hasLoggedIn) ...<dynamic>[
+            const ListCategory.start(),
+            const ListVendors.start()
+          ],
         ];
-      }).onErrorReturnWith((Object error, StackTrace stackTrace) => InitializeApp.error(error, stackTrace));
+      }).onErrorReturnWith((Object error, StackTrace stackTrace) =>
+              InitializeApp.error(error, stackTrace));
     });
   }
 
-  Stream<dynamic> _createUserStart(Stream<CreateUserStart> actions, EpicStore<AppState> store) {
+  Stream<dynamic> _createUserStart(
+      Stream<CreateUserStart> actions, EpicStore<AppState> store) {
     return actions.flatMap((CreateUserStart action) {
       return Stream<void>.value(null)
-          .asyncMap((_) => _api.createUser(email: action.email, password: action.password))
+          .asyncMap((_) =>
+              _api.createUser(email: action.email, password: action.password))
           .mapTo(const CreateUser.successful())
-          .onErrorReturnWith((Object error, StackTrace stackTrace) => CreateUser.error(error, stackTrace))
+          .onErrorReturnWith((Object error, StackTrace stackTrace) =>
+              CreateUser.error(error, stackTrace))
           .doOnData(action.result);
     });
   }
 
-  Stream<void> _loginUserStart(Stream<LoginUserStart> actions, EpicStore<AppState> store) {
+  Stream<void> _loginUserStart(
+      Stream<LoginUserStart> actions, EpicStore<AppState> store) {
     return actions.flatMap((LoginUserStart action) {
       return Stream<void>.value(null)
-          .asyncMap((_) => _api.loginUser(email: action.email, password: action.password))
+          .asyncMap((_) =>
+              _api.loginUser(email: action.email, password: action.password))
           .mapTo(const LoginUser.successful())
-          .onErrorReturnWith((Object error, StackTrace stackTrace) => LoginUser.error(error, stackTrace))
+          .onErrorReturnWith((Object error, StackTrace stackTrace) =>
+              LoginUser.error(error, stackTrace))
           .doOnData(action.result);
     });
   }
 
-  Stream<void> _logoutUserStart(Stream<LogoutUserStart> actions, EpicStore<AppState> store) {
+  Stream<void> _logoutUserStart(
+      Stream<LogoutUserStart> actions, EpicStore<AppState> store) {
     return actions.flatMap((LogoutUserStart action) {
       return Stream<void>.value(null)
           .asyncMap((_) => _api.logOut())
           .mapTo(const LogoutUser.successful())
-          .onErrorReturnWith((Object error, StackTrace stackTrace) => LogoutUser.error(error, stackTrace));
+          .onErrorReturnWith((Object error, StackTrace stackTrace) =>
+              LogoutUser.error(error, stackTrace));
     });
   }
 
-  Stream<void> _updateProfileUrlStart(Stream<UpdateProfileUrlStart> actions, EpicStore<AppState> store) {
+  Stream<void> _updateProfileUrlStart(
+      Stream<UpdateProfileUrlStart> actions, EpicStore<AppState> store) {
     return actions.flatMap((UpdateProfileUrlStart action) {
       return Stream<void>.value(null)
-          .asyncMap((_) => _api.updateProfileUrl(uid: store.state.auth.user!.uid, path: action.path))
+          .asyncMap((_) => _api.updateProfileUrl(
+              uid: store.state.auth.user!.uid, path: action.path))
           .mapTo(const UpdateProfileUrl.successful())
-          .onErrorReturnWith((Object error, StackTrace stackTrace) => UpdateProfileUrl.error(error, stackTrace));
+          .onErrorReturnWith((Object error, StackTrace stackTrace) =>
+              UpdateProfileUrl.error(error, stackTrace));
     });
   }
 }

@@ -36,43 +36,47 @@ class _CartPageState extends State<CartPage> {
     showDialog(
       context: context,
       builder: (BuildContext context) {
-        return VouchersContainer(builder: (BuildContext context, List<Profile> profiles) {
+        return VouchersContainer(
+            builder: (BuildContext context, List<Profile> profiles) {
           final List<Voucher> vouchers = profiles[0].vouchers;
           if (kDebugMode) {
             print('vouchers $vouchers');
           }
-          return AlertDialog(title: const Text('Enter voucher code'), actions: <Widget>[
-            TextField(
-                controller: _textController,
-                decoration: InputDecoration(
-                  labelText: 'Enter voucher code',
-                  hintText: 'Type the voucher code here',
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10.0),
-                  ),
-                  prefixIcon: const Icon(Icons.edit),
-                )),
-            TextButton(
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-                child: const Text('Cancel')),
-            TextButton(
-                onPressed: () {
-                  final List<Voucher> matchingVouchers = vouchers.where((Voucher voucher) {
-                    return voucher.title == _textController.text;
-                  }).toList();
+          return AlertDialog(
+              title: const Text('Enter voucher code'),
+              actions: <Widget>[
+                TextField(
+                    controller: _textController,
+                    decoration: InputDecoration(
+                      labelText: 'Enter voucher code',
+                      hintText: 'Type the voucher code here',
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
+                      prefixIcon: const Icon(Icons.edit),
+                    )),
+                TextButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    child: const Text('Cancel')),
+                TextButton(
+                    onPressed: () {
+                      final List<Voucher> matchingVouchers =
+                          vouchers.where((Voucher voucher) {
+                        return voucher.title == _textController.text;
+                      }).toList();
 
-                  if (matchingVouchers.isNotEmpty) {
-                    setState(() {
-                      isVoucherApplied = true;
-                      discountAmount = matchingVouchers[0].discount;
-                    });
-                  }
-                  Navigator.of(context).pop();
-                },
-                child: const Text('Add')),
-          ]);
+                      if (matchingVouchers.isNotEmpty) {
+                        setState(() {
+                          isVoucherApplied = true;
+                          discountAmount = matchingVouchers[0].discount;
+                        });
+                      }
+                      Navigator.of(context).pop();
+                    },
+                    child: const Text('Add')),
+              ]);
         });
       },
     );
@@ -86,12 +90,15 @@ class _CartPageState extends State<CartPage> {
     return CartContainer(builder: (BuildContext context, Cart cart) {
       return PendingContainer(
         builder: (BuildContext context, Set<String> pending) {
-          return ProductsContainer(builder: (BuildContext context, Map<String, Product> products) {
-            final double total = cart.items.fold(0.0, (double sum, CartItem item) {
+          return ProductsContainer(
+              builder: (BuildContext context, Map<String, Product> products) {
+            final double total =
+                cart.items.fold(0.0, (double sum, CartItem item) {
               final Product product = products[item.productId]!;
               return sum + product.price * item.quantity;
             });
-            final int totalNumberOfItems = cart.items.fold(0, (int sum, CartItem item) {
+            final int totalNumberOfItems =
+                cart.items.fold(0, (int sum, CartItem item) {
               return sum + item.quantity;
             });
             return Scaffold(
@@ -111,7 +118,8 @@ class _CartPageState extends State<CartPage> {
                       : Padding(
                           padding: const EdgeInsets.all(16.0),
                           child: OrdersContainer(
-                            builder: (BuildContext context, List<Order> orders) {
+                            builder:
+                                (BuildContext context, List<Order> orders) {
                               double sum = 0;
                               for (final Order order in orders) {
                                 for (final Product product in order.products) {
@@ -124,9 +132,11 @@ class _CartPageState extends State<CartPage> {
                                   Expanded(
                                     child: ListView.separated(
                                       itemCount: cart.items.length,
-                                      itemBuilder: (BuildContext context, int index) {
+                                      itemBuilder:
+                                          (BuildContext context, int index) {
                                         final CartItem item = cart.items[index];
-                                        final Product product = products[item.productId]!;
+                                        final Product product =
+                                            products[item.productId]!;
                                         return Column(
                                           children: <Widget>[
                                             ListTile(
@@ -137,27 +147,42 @@ class _CartPageState extends State<CartPage> {
                                                 width: 56,
                                               ),
                                               title: Text(product.title),
-                                              trailing: Text('${product.price * item.quantity} RON'),
+                                              trailing: Text(
+                                                  '${product.price * item.quantity} RON'),
                                             ),
                                             Row(
                                               children: <Widget>[
                                                 IconButton(
                                                   onPressed: () {
-                                                    StoreProvider.of<AppState>(context)
-                                                        .dispatch(UpdateCart(product.id, add: false));
+                                                    StoreProvider.of<AppState>(
+                                                            context)
+                                                        .dispatch(UpdateCart(
+                                                            product.id,
+                                                            add: false));
                                                   },
-                                                  icon: const Icon(Icons.remove_circle_outline),
+                                                  icon: const Icon(Icons
+                                                      .remove_circle_outline),
                                                   color: Colors.pinkAccent,
                                                 ),
                                                 Text('${item.quantity}'),
                                                 IconButton(
-                                                  onPressed: pending.contains(SubmitOrder.pendingKey)
+                                                  onPressed: pending.contains(
+                                                          SubmitOrder
+                                                              .pendingKey)
                                                       ? null
                                                       : () {
-                                                          StoreProvider.of<AppState>(context)
-                                                              .dispatch(UpdateCart(product.id, add: true));
+                                                          StoreProvider.of<
+                                                                      AppState>(
+                                                                  context)
+                                                              .dispatch(
+                                                                  UpdateCart(
+                                                                      product
+                                                                          .id,
+                                                                      add:
+                                                                          true));
                                                         },
-                                                  icon: const Icon(Icons.add_circle_outline),
+                                                  icon: const Icon(
+                                                      Icons.add_circle_outline),
                                                   color: Colors.pinkAccent,
                                                 ),
                                               ],
@@ -165,7 +190,8 @@ class _CartPageState extends State<CartPage> {
                                           ],
                                         );
                                       },
-                                      separatorBuilder: (BuildContext context, int index) {
+                                      separatorBuilder:
+                                          (BuildContext context, int index) {
                                         return const Divider();
                                       },
                                     ),
@@ -173,25 +199,31 @@ class _CartPageState extends State<CartPage> {
                                   ListTile(
                                     leading: CircleAvatar(
                                         backgroundColor: Colors.grey.shade200,
-                                        child: const Icon(Icons.discount, color: Colors.pink)),
+                                        child: const Icon(Icons.discount,
+                                            color: Colors.pink)),
                                     trailing: GestureDetector(
                                       onTap: () {
                                         showAlertBox(context);
                                       },
                                       child: const Text(
                                         'Add voucher code ',
-                                        style: TextStyle(fontSize: 18, color: Colors.grey),
+                                        style: TextStyle(
+                                            fontSize: 18, color: Colors.grey),
                                       ),
                                     ),
                                   ),
                                   ListTile(
-                                      leading: const Icon(Icons.delivery_dining, size: 32, color: Colors.pinkAccent),
+                                      leading: const Icon(Icons.delivery_dining,
+                                          size: 32, color: Colors.pinkAccent),
                                       title: const Text(
                                         'Delivery fee',
-                                        style: TextStyle(fontSize: 18, color: Colors.grey),
+                                        style: TextStyle(
+                                            fontSize: 18, color: Colors.grey),
                                       ),
-                                      trailing:
-                                          Text(sum <= 1500 ? '25 LEI' : 'FREE', style: const TextStyle(fontSize: 18))),
+                                      trailing: Text(
+                                          sum <= 1500 ? '25 LEI' : 'FREE',
+                                          style:
+                                              const TextStyle(fontSize: 18))),
                                   ListTile(
                                     title: Row(
                                       children: <Widget>[
@@ -199,15 +231,23 @@ class _CartPageState extends State<CartPage> {
                                           isVoucherApplied
                                               ? '% ${total - discountAmount + transportFee} RON'
                                               : '${total + transportFee} RON',
-                                          style: TextStyle(fontSize: 26, color: isVoucherApplied ? Colors.red : null),
+                                          style: TextStyle(
+                                              fontSize: 26,
+                                              color: isVoucherApplied
+                                                  ? Colors.red
+                                                  : null),
                                         ),
                                       ],
                                     ),
                                     trailing: ElevatedButton(
-                                      onPressed: pending.contains(SubmitOrder.pendingKey)
+                                      onPressed: pending
+                                              .contains(SubmitOrder.pendingKey)
                                           ? null
                                           : () {
-                                              StoreProvider.of<AppState>(context).dispatch(const SubmitOrder.start());
+                                              StoreProvider.of<AppState>(
+                                                      context)
+                                                  .dispatch(const SubmitOrder
+                                                      .start());
                                             },
                                       child: const Text(
                                         'Order ',

@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:e_commerce_app/src/presentation/vendors_items_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -30,6 +29,7 @@ import 'src/presentation/orders_page.dart';
 import 'src/presentation/product_page.dart';
 import 'src/presentation/profile_page.dart';
 import 'src/presentation/sellers_page.dart';
+import 'src/presentation/vendors_items_page.dart';
 import 'src/presentation/vouchers_page.dart';
 import 'src/reducer/reducer.dart';
 
@@ -37,7 +37,8 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
-  final AuthApi authApi = AuthApi(FirebaseAuth.instance, FirebaseStorage.instance);
+  final AuthApi authApi =
+      AuthApi(FirebaseAuth.instance, FirebaseStorage.instance);
   final AuthEpics auth = AuthEpics(authApi);
   final ProductsApi productsApi = ProductsApi(FirebaseFirestore.instance);
   final OrdersApi ordersApi = OrdersApi(FirebaseFirestore.instance);
@@ -78,20 +79,27 @@ class MyApp extends StatelessWidget {
         ),
         routes: <String, WidgetBuilder>{
           '/': (BuildContext context) {
-
-            return UserContainer(builder: (BuildContext context, AppUser? user) {
+            return UserContainer(
+                builder: (BuildContext context, AppUser? user) {
               if (user == null) {
                 return const LoginPage();
               } else {
                 final String currentUserEmail = store.state.auth.user!.email;
-                final List<Vendor> vendors = store.state.products.vendors.toList();
+                final List<Vendor> vendors =
+                    store.state.products.vendors.toList();
                 bool isSeller = false;
-                if(vendors.isNotEmpty){
+                if (vendors.isNotEmpty) {
                   final Vendor vendor = vendors.firstWhere(
-                        (Vendor element) => element.email == currentUserEmail,
-                    orElse: () => const Vendor(id: '0', name: 'name', image: 'image', description: 'description', email: 'NOT_A_COMPANY_EMAIL'), // or provide a default Vendor instance
+                    (Vendor element) => element.email == currentUserEmail,
+                    orElse: () => const Vendor(
+                        id: '0',
+                        name: 'name',
+                        image: 'image',
+                        description: 'description',
+                        email:
+                            'NOT_A_COMPANY_EMAIL'), // or provide a default Vendor instance
                   );
-                  if(vendor.email!='NOT_A_COMPANY_EMAIL') {
+                  if (vendor.email != 'NOT_A_COMPANY_EMAIL') {
                     isSeller = true;
                   }
                 }

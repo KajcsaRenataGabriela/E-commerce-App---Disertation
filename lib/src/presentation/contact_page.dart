@@ -43,10 +43,12 @@ class ContactPage extends StatelessWidget {
                         ElevatedButton(
                           style: ElevatedButton.styleFrom(
                               backgroundColor: Colors.white,
-                              side: BorderSide(color: Colors.pinkAccent.shade200),
+                              side:
+                                  BorderSide(color: Colors.pinkAccent.shade200),
                               shadowColor: Colors.pink.shade200),
                           onPressed: () async {
-                            final List<MailApp> apps = await OpenMailApp.getMailApps();
+                            final List<MailApp> apps =
+                                await OpenMailApp.getMailApps();
                             if (apps.isEmpty) {
                               //ignore: use_build_context_synchronously
                               showNoMailAppsDialog(context);
@@ -81,8 +83,12 @@ class ContactPage extends StatelessWidget {
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: const <Widget>[
-                                    Text('Email', style: TextStyle(color: Colors.pinkAccent)),
-                                    Text('kajcsarenata@gmail.com', style: TextStyle(color: Colors.pinkAccent))
+                                    Text('Email',
+                                        style: TextStyle(
+                                            color: Colors.pinkAccent)),
+                                    Text('kajcsarenata@gmail.com',
+                                        style:
+                                            TextStyle(color: Colors.pinkAccent))
                                   ],
                                 ),
                               )
@@ -93,7 +99,8 @@ class ContactPage extends StatelessWidget {
                         ElevatedButton(
                           style: ElevatedButton.styleFrom(
                               backgroundColor: Colors.white,
-                              side: BorderSide(color: Colors.pinkAccent.shade200),
+                              side:
+                                  BorderSide(color: Colors.pinkAccent.shade200),
                               shadowColor: Colors.pink.shade200),
                           onPressed: () {
                             _makePhoneCall('+40726421575');
@@ -110,8 +117,12 @@ class ContactPage extends StatelessWidget {
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: const <Widget>[
-                                    Text('Phone', style: TextStyle(color: Colors.pinkAccent)),
-                                    Text('0726421575', style: TextStyle(color: Colors.pinkAccent))
+                                    Text('Phone',
+                                        style: TextStyle(
+                                            color: Colors.pinkAccent)),
+                                    Text('0726421575',
+                                        style:
+                                            TextStyle(color: Colors.pinkAccent))
                                   ],
                                 ),
                               )

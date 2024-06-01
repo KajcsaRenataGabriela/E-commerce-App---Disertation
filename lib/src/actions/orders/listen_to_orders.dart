@@ -8,5 +8,6 @@ class ListenToOrders with _$ListenToOrders {
 
   const factory ListenToOrders.event(List<Order> orders) = OnOrdersEvent;
 
-  const factory ListenToOrders.error(Object error, StackTrace stackTrace) = ListenToOrdersError;
+  const factory ListenToOrders.error(Object error, StackTrace stackTrace) =
+      ListenToOrdersError;
 }

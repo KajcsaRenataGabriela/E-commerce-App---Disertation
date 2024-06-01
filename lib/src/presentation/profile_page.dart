@@ -40,7 +40,8 @@ class _ProfilePageState extends State<ProfilePage> {
             height: 160,
             child: Column(
               children: <Widget>[
-                const Text('Where do you want to pick profile pic from?', style: TextStyle(fontSize: 18)),
+                const Text('Where do you want to pick profile pic from?',
+                    style: TextStyle(fontSize: 18)),
                 const SizedBox(height: 24.0),
                 ListTile(
                   title: const Text('Gallery'),
@@ -73,12 +74,14 @@ class _ProfilePageState extends State<ProfilePage> {
           children: <Widget>[
             GestureDetector(
               onTap: () async {
-                final Store<AppState> store = StoreProvider.of<AppState>(context);
+                final Store<AppState> store =
+                    StoreProvider.of<AppState>(context);
                 final ImageSource? source = await _pickSource(context);
                 if (source == null) {
                   return;
                 }
-                final XFile? file = await ImagePicker().pickImage(source: source);
+                final XFile? file =
+                    await ImagePicker().pickImage(source: source);
                 if (file == null) {
                   return;
                 }
@@ -86,8 +89,10 @@ class _ProfilePageState extends State<ProfilePage> {
                 store.dispatch(UpdateProfileUrl.start(file.path));
               },
               child: Align(
-                child: PendingContainer(builder: (BuildContext context, Set<String> vm) {
-                  return UserContainer(builder: (BuildContext context, AppUser? user) {
+                child: PendingContainer(
+                    builder: (BuildContext context, Set<String> vm) {
+                  return UserContainer(
+                      builder: (BuildContext context, AppUser? user) {
                     final bool hasPicture = user?.pictureUrl != null;
 
                     return Card(
@@ -98,7 +103,9 @@ class _ProfilePageState extends State<ProfilePage> {
                           children: <Widget>[
                             Container(
                               decoration: BoxDecoration(
-                                color: hasPicture ? const Color(0x00000000) : Colors.red,
+                                color: hasPicture
+                                    ? const Color(0x00000000)
+                                    : Colors.red,
                                 shape: BoxShape.circle,
                               ),
                               width: 96.0,
@@ -106,22 +113,28 @@ class _ProfilePageState extends State<ProfilePage> {
                               alignment: AlignmentDirectional.center,
                               child: hasPicture
                                   ? CircleAvatar(
-                                      foregroundImage: NetworkImage(user!.pictureUrl!),
+                                      foregroundImage:
+                                          NetworkImage(user!.pictureUrl!),
                                       radius: 96.0 / 2,
                                     )
                                   : Text(
                                       user!.email[0].toUpperCase(),
-                                      style: const TextStyle(fontSize: 64.0, color: Colors.white),
+                                      style: const TextStyle(
+                                          fontSize: 64.0, color: Colors.white),
                                     ),
                             ),
                             Padding(
                               padding: const EdgeInsets.all(16),
                               child: Text(
-                                user.email.substring(0, user.email.indexOf('@')),
-                                style: const TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold),
+                                user.email
+                                    .substring(0, user.email.indexOf('@')),
+                                style: const TextStyle(
+                                    fontSize: 24.0,
+                                    fontWeight: FontWeight.bold),
                               ),
                             ),
-                            OrdersContainer(builder: (BuildContext context, List<Order> orders) {
+                            OrdersContainer(builder:
+                                (BuildContext context, List<Order> orders) {
                               double sum = 0;
                               for (final Order order in orders) {
                                 for (final Product product in order.products) {
@@ -150,7 +163,8 @@ class _ProfilePageState extends State<ProfilePage> {
                                 Padding(
                                     padding: const EdgeInsets.only(bottom: 16),
                                     child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceEvenly,
                                       children: <Widget>[
                                         Text(
                                             roundSum > 1500
@@ -159,10 +173,14 @@ class _ProfilePageState extends State<ProfilePage> {
                                                     ? 'GOLD'
                                                     : 'SILVER',
                                             style: const TextStyle(
-                                                fontSize: 20.0, fontWeight: FontWeight.bold, color: Colors.pinkAccent)),
+                                                fontSize: 20.0,
+                                                fontWeight: FontWeight.bold,
+                                                color: Colors.pinkAccent)),
                                         Text('$roundSum POINTS',
                                             style: const TextStyle(
-                                                fontSize: 20.0, fontWeight: FontWeight.bold, color: Colors.pinkAccent)),
+                                                fontSize: 20.0,
+                                                fontWeight: FontWeight.bold,
+                                                color: Colors.pinkAccent)),
                                       ],
                                     ))
                               ]);
@@ -266,7 +284,8 @@ class _ProfilePageState extends State<ProfilePage> {
                       ),
                     ),
                     onTap: () {
-                      StoreProvider.of<AppState>(context).dispatch(const LogoutUserStart());
+                      StoreProvider.of<AppState>(context)
+                          .dispatch(const LogoutUserStart());
                       Navigator.pushNamed(context, '/login');
                     },
                   ),

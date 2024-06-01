@@ -25,11 +25,14 @@ class AuthApi {
     }).distinct();
   }
 
-  Future<void> createUser({required String email, required String password}) async {
-    await _auth.createUserWithEmailAndPassword(email: email, password: password);
+  Future<void> createUser(
+      {required String email, required String password}) async {
+    await _auth.createUserWithEmailAndPassword(
+        email: email, password: password);
   }
 
-  Future<void> loginUser({required String email, required String password}) async {
+  Future<void> loginUser(
+      {required String email, required String password}) async {
     await _auth.signInWithEmailAndPassword(email: email, password: password);
   }
 
@@ -37,7 +40,8 @@ class AuthApi {
     await _auth.signOut();
   }
 
-  Future<void> updateProfileUrl({required String uid, required String path}) async {
+  Future<void> updateProfileUrl(
+      {required String uid, required String path}) async {
     final File file = File(path);
     final Reference ref = _storage.ref('/users/$uid/profile.png');
     await ref.putFile(file);

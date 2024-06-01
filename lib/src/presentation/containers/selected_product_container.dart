@@ -9,7 +9,15 @@ class SelectedProductContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return StoreConnector<AppState, Product>(
       converter: (Store<AppState> store) {
-        return store.state.products.products[store.state.products.selectedProductId]!;
+        if (store.state.products
+                .products[store.state.products.selectedProductId] !=
+            null) {
+          return store
+              .state.products.products[store.state.products.selectedProductId]!;
+        } else {
+          return store.state.products
+              .allProducts[store.state.products.selectedProductId]!;
+        }
       },
       builder: builder,
     );

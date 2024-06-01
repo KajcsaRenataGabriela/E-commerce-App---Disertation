@@ -59,8 +59,9 @@ class _OrdersPageState extends State<OrdersPage> {
                         ),
                         Column(
                           children: order.cart.items.map((CartItem item) {
-                            final Product product =
-                                order.products.firstWhere((Product product) => product.id == item.productId);
+                            final Product product = order.products.firstWhere(
+                                (Product product) =>
+                                    product.id == item.productId);
 
                             return Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -75,7 +76,8 @@ class _OrdersPageState extends State<OrdersPage> {
                                     width: 56.0,
                                   ),
                                   title: Text(product.title),
-                                  trailing: Text('${product.price * item.quantity} lei'),
+                                  trailing: Text(
+                                      '${product.price * item.quantity} lei'),
                                 ),
                               ],
                             );

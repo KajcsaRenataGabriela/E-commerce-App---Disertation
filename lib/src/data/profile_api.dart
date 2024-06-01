@@ -9,12 +9,17 @@ class ProfilesApi {
   final FirebaseFirestore _firestore;
 
   Future<void> generateProfile(String uid) async {
-    final DocumentReference<Map<String, dynamic>> ref = _firestore.collection('profiles').doc();
+    final DocumentReference<Map<String, dynamic>> ref =
+        _firestore.collection('profiles').doc();
 
     const Voucher welcomeVoucher = Voucher$(title: 'Welcome', discount: 10);
 
-    final Profile profile =
-        Profile$(id: ref.id, uid: uid, totalPoints: 0, currentPoints: 0, vouchers: <Voucher>[welcomeVoucher]);
+    final Profile profile = Profile$(
+        id: ref.id,
+        uid: uid,
+        totalPoints: 0,
+        currentPoints: 0,
+        vouchers: <Voucher>[welcomeVoucher]);
 
     await ref.set(profile.toJson());
   }
@@ -23,18 +28,22 @@ class ProfilesApi {
     final Voucher voucher = Voucher$(title: title, discount: discount);
 
     // Assuming you have a Firestore collection reference for the 'profiles' collection.
-    final CollectionReference<Map<String, dynamic>> profilesCollection = _firestore.collection('profiles');
+    final CollectionReference<Map<String, dynamic>> profilesCollection =
+        _firestore.collection('profiles');
 
     try {
       // Step 1: Get the reference to the user's document based on the UID.
-      final QuerySnapshot<Object?> querySnapshot = await profilesCollection.where('uid', isEqualTo: uid).get();
+      final QuerySnapshot<Object?> querySnapshot =
+          await profilesCollection.where('uid', isEqualTo: uid).get();
 
       if (querySnapshot.docs.isNotEmpty) {
-        final DocumentReference<Object?> userDocRef = querySnapshot.docs.first.reference;
+        final DocumentReference<Object?> userDocRef =
+            querySnapshot.docs.first.reference;
 
         // Step 2: Update the 'vouchers' field in the user's document using FieldValue.arrayUnion.
         await userDocRef.update(<String, dynamic>{
-          'vouchers': FieldValue.arrayUnion(<Map<String, dynamic>>[voucher.toJson()]),
+          'vouchers':
+              FieldValue.arrayUnion(<Map<String, dynamic>>[voucher.toJson()]),
         });
 
         if (kDebugMode) {
@@ -59,7 +68,8 @@ class ProfilesApi {
         .snapshots()
         .map((QuerySnapshot<Map<String, dynamic>> snapshot) {
       return snapshot.docs
-          .map((QueryDocumentSnapshot<Map<String, dynamic>> doc) => Profile$.fromJson(doc.data()))
+          .map((QueryDocumentSnapshot<Map<String, dynamic>> doc) =>
+              Profile$.fromJson(doc.data()))
           .toList();
     });
   }

@@ -7,5 +7,6 @@ class Voucher with _$Voucher {
     required int discount,
   }) = Voucher$;
 
-  factory Voucher.fromJson(Map<dynamic, dynamic> json) => _$VoucherFromJson(Map<String, dynamic>.from(json));
+  factory Voucher.fromJson(Map<dynamic, dynamic> json) =>
+      _$VoucherFromJson(Map<String, dynamic>.from(json));
 }

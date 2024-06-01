@@ -734,7 +734,10 @@ ProductsState _$ProductsStateFromJson(Map<String, dynamic> json) {
 mixin _$ProductsState {
   @JsonSerializable(explicitToJson: true)
   Map<String, Product> get products => throw _privateConstructorUsedError;
+  @JsonSerializable(explicitToJson: true)
+  Map<String, Product> get allProducts => throw _privateConstructorUsedError;
   List<String> get productIds => throw _privateConstructorUsedError;
+  List<String> get allProductIds => throw _privateConstructorUsedError;
   List<Category> get categories => throw _privateConstructorUsedError;
   List<Vendor> get vendors => throw _privateConstructorUsedError;
   String? get selectedCategoryId => throw _privateConstructorUsedError;
@@ -754,7 +757,9 @@ abstract class $ProductsStateCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonSerializable(explicitToJson: true) Map<String, Product> products,
+      @JsonSerializable(explicitToJson: true) Map<String, Product> allProducts,
       List<String> productIds,
+      List<String> allProductIds,
       List<Category> categories,
       List<Vendor> vendors,
       String? selectedCategoryId,
@@ -775,7 +780,9 @@ class _$ProductsStateCopyWithImpl<$Res, $Val extends ProductsState>
   @override
   $Res call({
     Object? products = null,
+    Object? allProducts = null,
     Object? productIds = null,
+    Object? allProductIds = null,
     Object? categories = null,
     Object? vendors = null,
     Object? selectedCategoryId = freezed,
@@ -786,9 +793,17 @@ class _$ProductsStateCopyWithImpl<$Res, $Val extends ProductsState>
           ? _value.products
           : products // ignore: cast_nullable_to_non_nullable
               as Map<String, Product>,
+      allProducts: null == allProducts
+          ? _value.allProducts
+          : allProducts // ignore: cast_nullable_to_non_nullable
+              as Map<String, Product>,
       productIds: null == productIds
           ? _value.productIds
           : productIds // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      allProductIds: null == allProductIds
+          ? _value.allProductIds
+          : allProductIds // ignore: cast_nullable_to_non_nullable
               as List<String>,
       categories: null == categories
           ? _value.categories
@@ -820,7 +835,9 @@ abstract class _$$ProductsState$CopyWith<$Res>
   @useResult
   $Res call(
       {@JsonSerializable(explicitToJson: true) Map<String, Product> products,
+      @JsonSerializable(explicitToJson: true) Map<String, Product> allProducts,
       List<String> productIds,
+      List<String> allProductIds,
       List<Category> categories,
       List<Vendor> vendors,
       String? selectedCategoryId,
@@ -839,7 +856,9 @@ class __$$ProductsState$CopyWithImpl<$Res>
   @override
   $Res call({
     Object? products = null,
+    Object? allProducts = null,
     Object? productIds = null,
+    Object? allProductIds = null,
     Object? categories = null,
     Object? vendors = null,
     Object? selectedCategoryId = freezed,
@@ -850,9 +869,17 @@ class __$$ProductsState$CopyWithImpl<$Res>
           ? _value._products
           : products // ignore: cast_nullable_to_non_nullable
               as Map<String, Product>,
+      allProducts: null == allProducts
+          ? _value._allProducts
+          : allProducts // ignore: cast_nullable_to_non_nullable
+              as Map<String, Product>,
       productIds: null == productIds
           ? _value._productIds
           : productIds // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      allProductIds: null == allProductIds
+          ? _value._allProductIds
+          : allProductIds // ignore: cast_nullable_to_non_nullable
               as List<String>,
       categories: null == categories
           ? _value._categories
@@ -879,14 +906,19 @@ class __$$ProductsState$CopyWithImpl<$Res>
 class _$ProductsState$ implements ProductsState$ {
   const _$ProductsState$(
       {@JsonSerializable(explicitToJson: true)
-      final Map<String, Product> products = const <String, Product>{},
+          final Map<String, Product> products = const <String, Product>{},
+      @JsonSerializable(explicitToJson: true)
+          final Map<String, Product> allProducts = const <String, Product>{},
       final List<String> productIds = const <String>[],
+      final List<String> allProductIds = const <String>[],
       final List<Category> categories = const <Category>[],
       final List<Vendor> vendors = const <Vendor>[],
       this.selectedCategoryId,
       this.selectedProductId})
       : _products = products,
+        _allProducts = allProducts,
         _productIds = productIds,
+        _allProductIds = allProductIds,
         _categories = categories,
         _vendors = vendors;
 
@@ -903,6 +935,16 @@ class _$ProductsState$ implements ProductsState$ {
     return EqualUnmodifiableMapView(_products);
   }
 
+  final Map<String, Product> _allProducts;
+  @override
+  @JsonKey()
+  @JsonSerializable(explicitToJson: true)
+  Map<String, Product> get allProducts {
+    if (_allProducts is EqualUnmodifiableMapView) return _allProducts;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_allProducts);
+  }
+
   final List<String> _productIds;
   @override
   @JsonKey()
@@ -910,6 +952,15 @@ class _$ProductsState$ implements ProductsState$ {
     if (_productIds is EqualUnmodifiableListView) return _productIds;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_productIds);
+  }
+
+  final List<String> _allProductIds;
+  @override
+  @JsonKey()
+  List<String> get allProductIds {
+    if (_allProductIds is EqualUnmodifiableListView) return _allProductIds;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_allProductIds);
   }
 
   final List<Category> _categories;
@@ -937,7 +988,7 @@ class _$ProductsState$ implements ProductsState$ {
 
   @override
   String toString() {
-    return 'ProductsState(products: $products, productIds: $productIds, categories: $categories, vendors: $vendors, selectedCategoryId: $selectedCategoryId, selectedProductId: $selectedProductId)';
+    return 'ProductsState(products: $products, allProducts: $allProducts, productIds: $productIds, allProductIds: $allProductIds, categories: $categories, vendors: $vendors, selectedCategoryId: $selectedCategoryId, selectedProductId: $selectedProductId)';
   }
 
   @override
@@ -947,7 +998,11 @@ class _$ProductsState$ implements ProductsState$ {
             other is _$ProductsState$ &&
             const DeepCollectionEquality().equals(other._products, _products) &&
             const DeepCollectionEquality()
+                .equals(other._allProducts, _allProducts) &&
+            const DeepCollectionEquality()
                 .equals(other._productIds, _productIds) &&
+            const DeepCollectionEquality()
+                .equals(other._allProductIds, _allProductIds) &&
             const DeepCollectionEquality()
                 .equals(other._categories, _categories) &&
             const DeepCollectionEquality().equals(other._vendors, _vendors) &&
@@ -962,7 +1017,9 @@ class _$ProductsState$ implements ProductsState$ {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(_products),
+      const DeepCollectionEquality().hash(_allProducts),
       const DeepCollectionEquality().hash(_productIds),
+      const DeepCollectionEquality().hash(_allProductIds),
       const DeepCollectionEquality().hash(_categories),
       const DeepCollectionEquality().hash(_vendors),
       selectedCategoryId,
@@ -985,8 +1042,11 @@ class _$ProductsState$ implements ProductsState$ {
 abstract class ProductsState$ implements ProductsState {
   const factory ProductsState$(
       {@JsonSerializable(explicitToJson: true)
-      final Map<String, Product> products,
+          final Map<String, Product> products,
+      @JsonSerializable(explicitToJson: true)
+          final Map<String, Product> allProducts,
       final List<String> productIds,
+      final List<String> allProductIds,
       final List<Category> categories,
       final List<Vendor> vendors,
       final String? selectedCategoryId,
@@ -999,7 +1059,12 @@ abstract class ProductsState$ implements ProductsState {
   @JsonSerializable(explicitToJson: true)
   Map<String, Product> get products;
   @override
+  @JsonSerializable(explicitToJson: true)
+  Map<String, Product> get allProducts;
+  @override
   List<String> get productIds;
+  @override
+  List<String> get allProductIds;
   @override
   List<Category> get categories;
   @override
