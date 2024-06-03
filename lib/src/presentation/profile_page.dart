@@ -202,7 +202,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: const <Widget>[
-                          Text('Your orders', style: TextStyle(fontSize: 26)),
+                          Text('Your orders', style: TextStyle(fontSize: 22)),
                           Icon(
                             Icons.shopping_cart_outlined,
                             size: 26,
@@ -220,7 +220,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: const <Widget>[
-                          Text('Your vouchers', style: TextStyle(fontSize: 26)),
+                          Text('Your vouchers', style: TextStyle(fontSize: 22)),
                           Icon(
                             Icons.discount_outlined,
                             size: 26,
@@ -238,7 +238,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: const <Widget>[
-                          Text('Contact us', style: TextStyle(fontSize: 26)),
+                          Text('Contact us', style: TextStyle(fontSize: 22)),
                           Icon(
                             Icons.contact_page_outlined,
                             size: 26,
@@ -257,7 +257,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: const <Widget>[
-                          Text('Language', style: TextStyle(fontSize: 26)),
+                          Text('Language', style: TextStyle(fontSize: 22)),
                           Icon(
                             Icons.language_outlined,
                             size: 26,
@@ -276,7 +276,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: const <Widget>[
                           Text('Change password',
-                              style: TextStyle(fontSize: 26)),
+                              style: TextStyle(fontSize: 22)),
                           Icon(
                             Icons.password_outlined,
                             size: 26,
@@ -294,7 +294,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: const <Widget>[
-                          Text('Logout', style: TextStyle(fontSize: 26)),
+                          Text('Logout', style: TextStyle(fontSize: 22)),
                           Icon(
                             Icons.logout,
                             size: 26,
