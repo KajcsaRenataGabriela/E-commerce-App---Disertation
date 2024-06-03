@@ -2989,6 +2989,581 @@ abstract class UpdateProfileUrlError implements UpdateProfileUrl, StopAction {
 }
 
 /// @nodoc
+mixin _$UpdatePassword {
+  String get pendingId => throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String newPassword, String pendingId) start,
+    required TResult Function(String pendingId) successful,
+    required TResult Function(
+            Object error, StackTrace stackTrace, String pendingId)
+        error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String newPassword, String pendingId)? start,
+    TResult? Function(String pendingId)? successful,
+    TResult? Function(Object error, StackTrace stackTrace, String pendingId)?
+        error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String newPassword, String pendingId)? start,
+    TResult Function(String pendingId)? successful,
+    TResult Function(Object error, StackTrace stackTrace, String pendingId)?
+        error,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(UpdatePasswordStart value) start,
+    required TResult Function(UpdatePasswordSuccessful value) successful,
+    required TResult Function(UpdatePasswordError value) error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(UpdatePasswordStart value)? start,
+    TResult? Function(UpdatePasswordSuccessful value)? successful,
+    TResult? Function(UpdatePasswordError value)? error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(UpdatePasswordStart value)? start,
+    TResult Function(UpdatePasswordSuccessful value)? successful,
+    TResult Function(UpdatePasswordError value)? error,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $UpdatePasswordCopyWith<UpdatePassword> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $UpdatePasswordCopyWith<$Res> {
+  factory $UpdatePasswordCopyWith(
+          UpdatePassword value, $Res Function(UpdatePassword) then) =
+      _$UpdatePasswordCopyWithImpl<$Res, UpdatePassword>;
+  @useResult
+  $Res call({String pendingId});
+}
+
+/// @nodoc
+class _$UpdatePasswordCopyWithImpl<$Res, $Val extends UpdatePassword>
+    implements $UpdatePasswordCopyWith<$Res> {
+  _$UpdatePasswordCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? pendingId = null,
+  }) {
+    return _then(_value.copyWith(
+      pendingId: null == pendingId
+          ? _value.pendingId
+          : pendingId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$UpdatePasswordStartCopyWith<$Res>
+    implements $UpdatePasswordCopyWith<$Res> {
+  factory _$$UpdatePasswordStartCopyWith(_$UpdatePasswordStart value,
+          $Res Function(_$UpdatePasswordStart) then) =
+      __$$UpdatePasswordStartCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String newPassword, String pendingId});
+}
+
+/// @nodoc
+class __$$UpdatePasswordStartCopyWithImpl<$Res>
+    extends _$UpdatePasswordCopyWithImpl<$Res, _$UpdatePasswordStart>
+    implements _$$UpdatePasswordStartCopyWith<$Res> {
+  __$$UpdatePasswordStartCopyWithImpl(
+      _$UpdatePasswordStart _value, $Res Function(_$UpdatePasswordStart) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? newPassword = null,
+    Object? pendingId = null,
+  }) {
+    return _then(_$UpdatePasswordStart(
+      null == newPassword
+          ? _value.newPassword
+          : newPassword // ignore: cast_nullable_to_non_nullable
+              as String,
+      pendingId: null == pendingId
+          ? _value.pendingId
+          : pendingId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$UpdatePasswordStart implements UpdatePasswordStart {
+  const _$UpdatePasswordStart(this.newPassword,
+      {this.pendingId = _kUpdatePasswordPendingId});
+
+  @override
+  final String newPassword;
+  @override
+  @JsonKey()
+  final String pendingId;
+
+  @override
+  String toString() {
+    return 'UpdatePassword.start(newPassword: $newPassword, pendingId: $pendingId)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UpdatePasswordStart &&
+            (identical(other.newPassword, newPassword) ||
+                other.newPassword == newPassword) &&
+            (identical(other.pendingId, pendingId) ||
+                other.pendingId == pendingId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, newPassword, pendingId);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UpdatePasswordStartCopyWith<_$UpdatePasswordStart> get copyWith =>
+      __$$UpdatePasswordStartCopyWithImpl<_$UpdatePasswordStart>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String newPassword, String pendingId) start,
+    required TResult Function(String pendingId) successful,
+    required TResult Function(
+            Object error, StackTrace stackTrace, String pendingId)
+        error,
+  }) {
+    return start(newPassword, pendingId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String newPassword, String pendingId)? start,
+    TResult? Function(String pendingId)? successful,
+    TResult? Function(Object error, StackTrace stackTrace, String pendingId)?
+        error,
+  }) {
+    return start?.call(newPassword, pendingId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String newPassword, String pendingId)? start,
+    TResult Function(String pendingId)? successful,
+    TResult Function(Object error, StackTrace stackTrace, String pendingId)?
+        error,
+    required TResult orElse(),
+  }) {
+    if (start != null) {
+      return start(newPassword, pendingId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(UpdatePasswordStart value) start,
+    required TResult Function(UpdatePasswordSuccessful value) successful,
+    required TResult Function(UpdatePasswordError value) error,
+  }) {
+    return start(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(UpdatePasswordStart value)? start,
+    TResult? Function(UpdatePasswordSuccessful value)? successful,
+    TResult? Function(UpdatePasswordError value)? error,
+  }) {
+    return start?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(UpdatePasswordStart value)? start,
+    TResult Function(UpdatePasswordSuccessful value)? successful,
+    TResult Function(UpdatePasswordError value)? error,
+    required TResult orElse(),
+  }) {
+    if (start != null) {
+      return start(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class UpdatePasswordStart implements UpdatePassword, StartAction {
+  const factory UpdatePasswordStart(final String newPassword,
+      {final String pendingId}) = _$UpdatePasswordStart;
+
+  String get newPassword;
+  @override
+  String get pendingId;
+  @override
+  @JsonKey(ignore: true)
+  _$$UpdatePasswordStartCopyWith<_$UpdatePasswordStart> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$UpdatePasswordSuccessfulCopyWith<$Res>
+    implements $UpdatePasswordCopyWith<$Res> {
+  factory _$$UpdatePasswordSuccessfulCopyWith(_$UpdatePasswordSuccessful value,
+          $Res Function(_$UpdatePasswordSuccessful) then) =
+      __$$UpdatePasswordSuccessfulCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String pendingId});
+}
+
+/// @nodoc
+class __$$UpdatePasswordSuccessfulCopyWithImpl<$Res>
+    extends _$UpdatePasswordCopyWithImpl<$Res, _$UpdatePasswordSuccessful>
+    implements _$$UpdatePasswordSuccessfulCopyWith<$Res> {
+  __$$UpdatePasswordSuccessfulCopyWithImpl(_$UpdatePasswordSuccessful _value,
+      $Res Function(_$UpdatePasswordSuccessful) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? pendingId = null,
+  }) {
+    return _then(_$UpdatePasswordSuccessful(
+      null == pendingId
+          ? _value.pendingId
+          : pendingId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$UpdatePasswordSuccessful implements UpdatePasswordSuccessful {
+  const _$UpdatePasswordSuccessful(
+      [this.pendingId = _kUpdatePasswordPendingId]);
+
+  @override
+  @JsonKey()
+  final String pendingId;
+
+  @override
+  String toString() {
+    return 'UpdatePassword.successful(pendingId: $pendingId)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UpdatePasswordSuccessful &&
+            (identical(other.pendingId, pendingId) ||
+                other.pendingId == pendingId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, pendingId);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UpdatePasswordSuccessfulCopyWith<_$UpdatePasswordSuccessful>
+      get copyWith =>
+          __$$UpdatePasswordSuccessfulCopyWithImpl<_$UpdatePasswordSuccessful>(
+              this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String newPassword, String pendingId) start,
+    required TResult Function(String pendingId) successful,
+    required TResult Function(
+            Object error, StackTrace stackTrace, String pendingId)
+        error,
+  }) {
+    return successful(pendingId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String newPassword, String pendingId)? start,
+    TResult? Function(String pendingId)? successful,
+    TResult? Function(Object error, StackTrace stackTrace, String pendingId)?
+        error,
+  }) {
+    return successful?.call(pendingId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String newPassword, String pendingId)? start,
+    TResult Function(String pendingId)? successful,
+    TResult Function(Object error, StackTrace stackTrace, String pendingId)?
+        error,
+    required TResult orElse(),
+  }) {
+    if (successful != null) {
+      return successful(pendingId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(UpdatePasswordStart value) start,
+    required TResult Function(UpdatePasswordSuccessful value) successful,
+    required TResult Function(UpdatePasswordError value) error,
+  }) {
+    return successful(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(UpdatePasswordStart value)? start,
+    TResult? Function(UpdatePasswordSuccessful value)? successful,
+    TResult? Function(UpdatePasswordError value)? error,
+  }) {
+    return successful?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(UpdatePasswordStart value)? start,
+    TResult Function(UpdatePasswordSuccessful value)? successful,
+    TResult Function(UpdatePasswordError value)? error,
+    required TResult orElse(),
+  }) {
+    if (successful != null) {
+      return successful(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class UpdatePasswordSuccessful implements UpdatePassword, StopAction {
+  const factory UpdatePasswordSuccessful([final String pendingId]) =
+      _$UpdatePasswordSuccessful;
+
+  @override
+  String get pendingId;
+  @override
+  @JsonKey(ignore: true)
+  _$$UpdatePasswordSuccessfulCopyWith<_$UpdatePasswordSuccessful>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$UpdatePasswordErrorCopyWith<$Res>
+    implements $UpdatePasswordCopyWith<$Res> {
+  factory _$$UpdatePasswordErrorCopyWith(_$UpdatePasswordError value,
+          $Res Function(_$UpdatePasswordError) then) =
+      __$$UpdatePasswordErrorCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({Object error, StackTrace stackTrace, String pendingId});
+}
+
+/// @nodoc
+class __$$UpdatePasswordErrorCopyWithImpl<$Res>
+    extends _$UpdatePasswordCopyWithImpl<$Res, _$UpdatePasswordError>
+    implements _$$UpdatePasswordErrorCopyWith<$Res> {
+  __$$UpdatePasswordErrorCopyWithImpl(
+      _$UpdatePasswordError _value, $Res Function(_$UpdatePasswordError) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? error = null,
+    Object? stackTrace = null,
+    Object? pendingId = null,
+  }) {
+    return _then(_$UpdatePasswordError(
+      null == error ? _value.error : error,
+      null == stackTrace
+          ? _value.stackTrace
+          : stackTrace // ignore: cast_nullable_to_non_nullable
+              as StackTrace,
+      null == pendingId
+          ? _value.pendingId
+          : pendingId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$UpdatePasswordError implements UpdatePasswordError {
+  const _$UpdatePasswordError(this.error, this.stackTrace,
+      [this.pendingId = _kUpdatePasswordPendingId]);
+
+  @override
+  final Object error;
+  @override
+  final StackTrace stackTrace;
+  @override
+  @JsonKey()
+  final String pendingId;
+
+  @override
+  String toString() {
+    return 'UpdatePassword.error(error: $error, stackTrace: $stackTrace, pendingId: $pendingId)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UpdatePasswordError &&
+            const DeepCollectionEquality().equals(other.error, error) &&
+            (identical(other.stackTrace, stackTrace) ||
+                other.stackTrace == stackTrace) &&
+            (identical(other.pendingId, pendingId) ||
+                other.pendingId == pendingId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType,
+      const DeepCollectionEquality().hash(error), stackTrace, pendingId);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UpdatePasswordErrorCopyWith<_$UpdatePasswordError> get copyWith =>
+      __$$UpdatePasswordErrorCopyWithImpl<_$UpdatePasswordError>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String newPassword, String pendingId) start,
+    required TResult Function(String pendingId) successful,
+    required TResult Function(
+            Object error, StackTrace stackTrace, String pendingId)
+        error,
+  }) {
+    return error(this.error, stackTrace, pendingId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String newPassword, String pendingId)? start,
+    TResult? Function(String pendingId)? successful,
+    TResult? Function(Object error, StackTrace stackTrace, String pendingId)?
+        error,
+  }) {
+    return error?.call(this.error, stackTrace, pendingId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String newPassword, String pendingId)? start,
+    TResult Function(String pendingId)? successful,
+    TResult Function(Object error, StackTrace stackTrace, String pendingId)?
+        error,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(this.error, stackTrace, pendingId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(UpdatePasswordStart value) start,
+    required TResult Function(UpdatePasswordSuccessful value) successful,
+    required TResult Function(UpdatePasswordError value) error,
+  }) {
+    return error(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(UpdatePasswordStart value)? start,
+    TResult? Function(UpdatePasswordSuccessful value)? successful,
+    TResult? Function(UpdatePasswordError value)? error,
+  }) {
+    return error?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(UpdatePasswordStart value)? start,
+    TResult Function(UpdatePasswordSuccessful value)? successful,
+    TResult Function(UpdatePasswordError value)? error,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class UpdatePasswordError implements UpdatePassword, StopAction {
+  const factory UpdatePasswordError(
+      final Object error, final StackTrace stackTrace,
+      [final String pendingId]) = _$UpdatePasswordError;
+
+  Object get error;
+  StackTrace get stackTrace;
+  @override
+  String get pendingId;
+  @override
+  @JsonKey(ignore: true)
+  _$$UpdatePasswordErrorCopyWith<_$UpdatePasswordError> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$SubmitOrder {
   String get pendingId => throw _privateConstructorUsedError;
   @optionalTypeArgs

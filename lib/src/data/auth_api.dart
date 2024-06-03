@@ -49,4 +49,8 @@ class AuthApi {
     final String url = await ref.getDownloadURL();
     _auth.currentUser!.updatePhotoURL(url);
   }
+
+  Future<void> updatePassword({required String newPassword}) async {
+    _auth.currentUser!.updatePassword(newPassword);
+  }
 }

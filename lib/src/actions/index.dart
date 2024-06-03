@@ -8,6 +8,7 @@ part 'auth/logout_user.dart';
 part 'auth/initialize_app.dart';
 part 'auth/update_cart.dart';
 part 'auth/update_profile_url.dart';
+part 'auth/update_password.dart';
 part 'orders/submit_order.dart';
 part 'orders/listen_to_orders.dart';
 part 'index.freezed.dart';

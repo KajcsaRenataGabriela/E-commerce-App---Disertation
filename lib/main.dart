@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:e_commerce_app/src/presentation/change_pw_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -117,6 +118,8 @@ class MyApp extends StatelessWidget {
           '/vouchers': (BuildContext context) => const VouchersPage(),
           '/seller': (BuildContext context) => const SellersPage(),
           '/vendorsItems': (BuildContext context) => const VendorsItemsPage(),
+          '/changePassword': (BuildContext context) =>
+              const ChangePasswordPage(),
         },
       ),
     );

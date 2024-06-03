@@ -18,6 +18,7 @@ class AuthEpics implements EpicClass<AppState> {
       TypedEpic<AppState, LoginUserStart>(_loginUserStart).call,
       TypedEpic<AppState, LogoutUserStart>(_logoutUserStart).call,
       TypedEpic<AppState, UpdateProfileUrlStart>(_updateProfileUrlStart).call,
+      TypedEpic<AppState, UpdatePasswordStart>(_updatePasswordStart).call,
     ])(actions, store);
   }
 
@@ -91,6 +92,17 @@ class AuthEpics implements EpicClass<AppState> {
           .mapTo(const UpdateProfileUrl.successful())
           .onErrorReturnWith((Object error, StackTrace stackTrace) =>
               UpdateProfileUrl.error(error, stackTrace));
+    });
+  }
+
+  Stream<void> _updatePasswordStart(
+      Stream<UpdatePasswordStart> actions, EpicStore<AppState> store) {
+    return actions.flatMap((UpdatePasswordStart action) {
+      return Stream<void>.value(null)
+          .asyncMap((_) => _api.updatePassword(newPassword: action.newPassword))
+          .mapTo(const UpdatePassword.successful())
+          .onErrorReturnWith((Object error, StackTrace stackTrace) =>
+              UpdatePassword.error(error, stackTrace));
     });
   }
 }

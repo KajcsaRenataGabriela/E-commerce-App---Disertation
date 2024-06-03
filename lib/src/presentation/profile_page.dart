@@ -275,6 +275,25 @@ class _ProfilePageState extends State<ProfilePage> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: const <Widget>[
+                          Text('Change password',
+                              style: TextStyle(fontSize: 26)),
+                          Icon(
+                            Icons.password_outlined,
+                            size: 26,
+                          )
+                        ],
+                      ),
+                    ),
+                    onTap: () {
+                      Navigator.pushNamed(context, '/changePassword');
+                    },
+                  ),
+                  GestureDetector(
+                    child: Container(
+                      padding: const EdgeInsets.all(12),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: const <Widget>[
                           Text('Logout', style: TextStyle(fontSize: 26)),
                           Icon(
                             Icons.logout,
