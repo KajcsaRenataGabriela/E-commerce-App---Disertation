@@ -5516,6 +5516,579 @@ abstract class CreateProductError implements CreateProduct, StopAction {
 }
 
 /// @nodoc
+mixin _$DeleteProduct {
+  String get pendingId => throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String id, String pendingId) start,
+    required TResult Function(String pendingId) successful,
+    required TResult Function(
+            Object error, StackTrace stackTrace, String pendingId)
+        error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String id, String pendingId)? start,
+    TResult? Function(String pendingId)? successful,
+    TResult? Function(Object error, StackTrace stackTrace, String pendingId)?
+        error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String id, String pendingId)? start,
+    TResult Function(String pendingId)? successful,
+    TResult Function(Object error, StackTrace stackTrace, String pendingId)?
+        error,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(DeleteProductStart value) start,
+    required TResult Function(DeleteProductSuccessful value) successful,
+    required TResult Function(DeleteProductError value) error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(DeleteProductStart value)? start,
+    TResult? Function(DeleteProductSuccessful value)? successful,
+    TResult? Function(DeleteProductError value)? error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(DeleteProductStart value)? start,
+    TResult Function(DeleteProductSuccessful value)? successful,
+    TResult Function(DeleteProductError value)? error,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $DeleteProductCopyWith<DeleteProduct> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $DeleteProductCopyWith<$Res> {
+  factory $DeleteProductCopyWith(
+          DeleteProduct value, $Res Function(DeleteProduct) then) =
+      _$DeleteProductCopyWithImpl<$Res, DeleteProduct>;
+  @useResult
+  $Res call({String pendingId});
+}
+
+/// @nodoc
+class _$DeleteProductCopyWithImpl<$Res, $Val extends DeleteProduct>
+    implements $DeleteProductCopyWith<$Res> {
+  _$DeleteProductCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? pendingId = null,
+  }) {
+    return _then(_value.copyWith(
+      pendingId: null == pendingId
+          ? _value.pendingId
+          : pendingId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$DeleteProductStartCopyWith<$Res>
+    implements $DeleteProductCopyWith<$Res> {
+  factory _$$DeleteProductStartCopyWith(_$DeleteProductStart value,
+          $Res Function(_$DeleteProductStart) then) =
+      __$$DeleteProductStartCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String id, String pendingId});
+}
+
+/// @nodoc
+class __$$DeleteProductStartCopyWithImpl<$Res>
+    extends _$DeleteProductCopyWithImpl<$Res, _$DeleteProductStart>
+    implements _$$DeleteProductStartCopyWith<$Res> {
+  __$$DeleteProductStartCopyWithImpl(
+      _$DeleteProductStart _value, $Res Function(_$DeleteProductStart) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? pendingId = null,
+  }) {
+    return _then(_$DeleteProductStart(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      pendingId: null == pendingId
+          ? _value.pendingId
+          : pendingId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$DeleteProductStart implements DeleteProductStart {
+  const _$DeleteProductStart(
+      {required this.id, this.pendingId = _kDeleteProductPendingId});
+
+  @override
+  final String id;
+  @override
+  @JsonKey()
+  final String pendingId;
+
+  @override
+  String toString() {
+    return 'DeleteProduct.start(id: $id, pendingId: $pendingId)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DeleteProductStart &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.pendingId, pendingId) ||
+                other.pendingId == pendingId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, id, pendingId);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$DeleteProductStartCopyWith<_$DeleteProductStart> get copyWith =>
+      __$$DeleteProductStartCopyWithImpl<_$DeleteProductStart>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String id, String pendingId) start,
+    required TResult Function(String pendingId) successful,
+    required TResult Function(
+            Object error, StackTrace stackTrace, String pendingId)
+        error,
+  }) {
+    return start(id, pendingId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String id, String pendingId)? start,
+    TResult? Function(String pendingId)? successful,
+    TResult? Function(Object error, StackTrace stackTrace, String pendingId)?
+        error,
+  }) {
+    return start?.call(id, pendingId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String id, String pendingId)? start,
+    TResult Function(String pendingId)? successful,
+    TResult Function(Object error, StackTrace stackTrace, String pendingId)?
+        error,
+    required TResult orElse(),
+  }) {
+    if (start != null) {
+      return start(id, pendingId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(DeleteProductStart value) start,
+    required TResult Function(DeleteProductSuccessful value) successful,
+    required TResult Function(DeleteProductError value) error,
+  }) {
+    return start(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(DeleteProductStart value)? start,
+    TResult? Function(DeleteProductSuccessful value)? successful,
+    TResult? Function(DeleteProductError value)? error,
+  }) {
+    return start?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(DeleteProductStart value)? start,
+    TResult Function(DeleteProductSuccessful value)? successful,
+    TResult Function(DeleteProductError value)? error,
+    required TResult orElse(),
+  }) {
+    if (start != null) {
+      return start(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class DeleteProductStart implements DeleteProduct, StartAction {
+  const factory DeleteProductStart(
+      {required final String id,
+      final String pendingId}) = _$DeleteProductStart;
+
+  String get id;
+  @override
+  String get pendingId;
+  @override
+  @JsonKey(ignore: true)
+  _$$DeleteProductStartCopyWith<_$DeleteProductStart> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$DeleteProductSuccessfulCopyWith<$Res>
+    implements $DeleteProductCopyWith<$Res> {
+  factory _$$DeleteProductSuccessfulCopyWith(_$DeleteProductSuccessful value,
+          $Res Function(_$DeleteProductSuccessful) then) =
+      __$$DeleteProductSuccessfulCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String pendingId});
+}
+
+/// @nodoc
+class __$$DeleteProductSuccessfulCopyWithImpl<$Res>
+    extends _$DeleteProductCopyWithImpl<$Res, _$DeleteProductSuccessful>
+    implements _$$DeleteProductSuccessfulCopyWith<$Res> {
+  __$$DeleteProductSuccessfulCopyWithImpl(_$DeleteProductSuccessful _value,
+      $Res Function(_$DeleteProductSuccessful) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? pendingId = null,
+  }) {
+    return _then(_$DeleteProductSuccessful(
+      null == pendingId
+          ? _value.pendingId
+          : pendingId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$DeleteProductSuccessful implements DeleteProductSuccessful {
+  const _$DeleteProductSuccessful([this.pendingId = _kDeleteProductPendingId]);
+
+  @override
+  @JsonKey()
+  final String pendingId;
+
+  @override
+  String toString() {
+    return 'DeleteProduct.successful(pendingId: $pendingId)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DeleteProductSuccessful &&
+            (identical(other.pendingId, pendingId) ||
+                other.pendingId == pendingId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, pendingId);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$DeleteProductSuccessfulCopyWith<_$DeleteProductSuccessful> get copyWith =>
+      __$$DeleteProductSuccessfulCopyWithImpl<_$DeleteProductSuccessful>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String id, String pendingId) start,
+    required TResult Function(String pendingId) successful,
+    required TResult Function(
+            Object error, StackTrace stackTrace, String pendingId)
+        error,
+  }) {
+    return successful(pendingId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String id, String pendingId)? start,
+    TResult? Function(String pendingId)? successful,
+    TResult? Function(Object error, StackTrace stackTrace, String pendingId)?
+        error,
+  }) {
+    return successful?.call(pendingId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String id, String pendingId)? start,
+    TResult Function(String pendingId)? successful,
+    TResult Function(Object error, StackTrace stackTrace, String pendingId)?
+        error,
+    required TResult orElse(),
+  }) {
+    if (successful != null) {
+      return successful(pendingId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(DeleteProductStart value) start,
+    required TResult Function(DeleteProductSuccessful value) successful,
+    required TResult Function(DeleteProductError value) error,
+  }) {
+    return successful(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(DeleteProductStart value)? start,
+    TResult? Function(DeleteProductSuccessful value)? successful,
+    TResult? Function(DeleteProductError value)? error,
+  }) {
+    return successful?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(DeleteProductStart value)? start,
+    TResult Function(DeleteProductSuccessful value)? successful,
+    TResult Function(DeleteProductError value)? error,
+    required TResult orElse(),
+  }) {
+    if (successful != null) {
+      return successful(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class DeleteProductSuccessful implements DeleteProduct, StopAction {
+  const factory DeleteProductSuccessful([final String pendingId]) =
+      _$DeleteProductSuccessful;
+
+  @override
+  String get pendingId;
+  @override
+  @JsonKey(ignore: true)
+  _$$DeleteProductSuccessfulCopyWith<_$DeleteProductSuccessful> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$DeleteProductErrorCopyWith<$Res>
+    implements $DeleteProductCopyWith<$Res> {
+  factory _$$DeleteProductErrorCopyWith(_$DeleteProductError value,
+          $Res Function(_$DeleteProductError) then) =
+      __$$DeleteProductErrorCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({Object error, StackTrace stackTrace, String pendingId});
+}
+
+/// @nodoc
+class __$$DeleteProductErrorCopyWithImpl<$Res>
+    extends _$DeleteProductCopyWithImpl<$Res, _$DeleteProductError>
+    implements _$$DeleteProductErrorCopyWith<$Res> {
+  __$$DeleteProductErrorCopyWithImpl(
+      _$DeleteProductError _value, $Res Function(_$DeleteProductError) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? error = null,
+    Object? stackTrace = null,
+    Object? pendingId = null,
+  }) {
+    return _then(_$DeleteProductError(
+      null == error ? _value.error : error,
+      null == stackTrace
+          ? _value.stackTrace
+          : stackTrace // ignore: cast_nullable_to_non_nullable
+              as StackTrace,
+      null == pendingId
+          ? _value.pendingId
+          : pendingId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$DeleteProductError implements DeleteProductError {
+  const _$DeleteProductError(this.error, this.stackTrace,
+      [this.pendingId = _kDeleteProductPendingId]);
+
+  @override
+  final Object error;
+  @override
+  final StackTrace stackTrace;
+  @override
+  @JsonKey()
+  final String pendingId;
+
+  @override
+  String toString() {
+    return 'DeleteProduct.error(error: $error, stackTrace: $stackTrace, pendingId: $pendingId)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DeleteProductError &&
+            const DeepCollectionEquality().equals(other.error, error) &&
+            (identical(other.stackTrace, stackTrace) ||
+                other.stackTrace == stackTrace) &&
+            (identical(other.pendingId, pendingId) ||
+                other.pendingId == pendingId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType,
+      const DeepCollectionEquality().hash(error), stackTrace, pendingId);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$DeleteProductErrorCopyWith<_$DeleteProductError> get copyWith =>
+      __$$DeleteProductErrorCopyWithImpl<_$DeleteProductError>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String id, String pendingId) start,
+    required TResult Function(String pendingId) successful,
+    required TResult Function(
+            Object error, StackTrace stackTrace, String pendingId)
+        error,
+  }) {
+    return error(this.error, stackTrace, pendingId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String id, String pendingId)? start,
+    TResult? Function(String pendingId)? successful,
+    TResult? Function(Object error, StackTrace stackTrace, String pendingId)?
+        error,
+  }) {
+    return error?.call(this.error, stackTrace, pendingId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String id, String pendingId)? start,
+    TResult Function(String pendingId)? successful,
+    TResult Function(Object error, StackTrace stackTrace, String pendingId)?
+        error,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(this.error, stackTrace, pendingId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(DeleteProductStart value) start,
+    required TResult Function(DeleteProductSuccessful value) successful,
+    required TResult Function(DeleteProductError value) error,
+  }) {
+    return error(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(DeleteProductStart value)? start,
+    TResult? Function(DeleteProductSuccessful value)? successful,
+    TResult? Function(DeleteProductError value)? error,
+  }) {
+    return error?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(DeleteProductStart value)? start,
+    TResult Function(DeleteProductSuccessful value)? successful,
+    TResult Function(DeleteProductError value)? error,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class DeleteProductError implements DeleteProduct, StopAction {
+  const factory DeleteProductError(
+      final Object error, final StackTrace stackTrace,
+      [final String pendingId]) = _$DeleteProductError;
+
+  Object get error;
+  StackTrace get stackTrace;
+  @override
+  String get pendingId;
+  @override
+  @JsonKey(ignore: true)
+  _$$DeleteProductErrorCopyWith<_$DeleteProductError> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$ListCategory {
   String get pendingId => throw _privateConstructorUsedError;
   @optionalTypeArgs

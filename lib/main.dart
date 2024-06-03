@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:e_commerce_app/src/presentation/change_pw_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -21,6 +20,7 @@ import 'src/epics/products_epics.dart';
 import 'src/epics/profile_epics.dart';
 import 'src/models/index.dart';
 import 'src/presentation/cart_page.dart';
+import 'src/presentation/change_pw_page.dart';
 import 'src/presentation/contact_page.dart';
 import 'src/presentation/containers/index.dart';
 import 'src/presentation/create_user_page.dart';

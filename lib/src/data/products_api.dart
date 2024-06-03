@@ -60,6 +60,10 @@ class ProductsApi {
     await _firestore.collection('products').doc(id).set(data);
   }
 
+  Future<void> deleteProduct({required String id}) async {
+    await _firestore.collection('products').doc(id).delete();
+  }
+
   Future<List<Vendor>> listVendors() async {
     final QuerySnapshot<Map<String, dynamic>> snapshot =
         await _firestore.collection('vendors').get();

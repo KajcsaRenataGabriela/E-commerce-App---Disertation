@@ -13,6 +13,7 @@ part 'orders/submit_order.dart';
 part 'orders/listen_to_orders.dart';
 part 'index.freezed.dart';
 part 'products/create_product.dart';
+part 'products/delete_product.dart';
 part 'products/list_category.dart';
 part 'products/list_products.dart';
 part 'products/list_all_products.dart';

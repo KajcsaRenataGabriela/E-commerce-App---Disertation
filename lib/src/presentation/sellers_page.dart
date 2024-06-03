@@ -109,23 +109,27 @@ class _SellersPageState extends State<SellersPage> {
   Widget build(BuildContext context) {
     return CategoriesContainer(
         builder: (BuildContext context, List<Category> categories) {
+      final String userEmail = _store.state.auth.user!.email;
       return Scaffold(
-          appBar: AppBar(title: const Text('Seller'), actions: <Widget>[
-            IconButton(
-              onPressed: () {
-                Navigator.pushNamed(context, '/vendorsItems');
-              },
-              icon: const Icon(Icons.list_alt_outlined),
-            ),
-            IconButton(
-              onPressed: () {
-                StoreProvider.of<AppState>(context)
-                    .dispatch(const LogoutUserStart());
-                Navigator.pushReplacementNamed(context, '/login');
-              },
-              icon: const Icon(Icons.power_settings_new_sharp),
-            ),
-          ]),
+          appBar: AppBar(
+              title: Text(userEmail.substring(
+                  userEmail.indexOf('@') + 1, userEmail.indexOf('.'))),
+              actions: <Widget>[
+                IconButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/vendorsItems');
+                  },
+                  icon: const Icon(Icons.list_alt_outlined),
+                ),
+                IconButton(
+                  onPressed: () {
+                    StoreProvider.of<AppState>(context)
+                        .dispatch(const LogoutUserStart());
+                    Navigator.pushReplacementNamed(context, '/login');
+                  },
+                  icon: const Icon(Icons.power_settings_new_sharp),
+                ),
+              ]),
           body: _isLoading
               ? const Center(
                   child: CircularProgressIndicator(),
@@ -144,6 +148,16 @@ class _SellersPageState extends State<SellersPage> {
                             padding: const EdgeInsets.all(24.0),
                             child: Column(
                               children: <Widget>[
+                                const Text(
+                                  'Complete fields in order to list an item',
+                                  style: TextStyle(
+                                      fontSize: 26,
+                                      color: Colors.pinkAccent,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                const SizedBox(
+                                  height: 40,
+                                ),
                                 TextField(
                                   controller: _title,
                                   keyboardType: TextInputType.visiblePassword,
