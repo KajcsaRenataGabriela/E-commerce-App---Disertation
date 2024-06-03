@@ -16,15 +16,20 @@ class CreateUserPage extends StatefulWidget {
 class _CreateUserPageState extends State<CreateUserPage> {
   final TextEditingController _email = TextEditingController();
   final TextEditingController _password = TextEditingController();
+  bool _isPasswordVisible = false;
 
   void _onNext() {
     final String email = _email.text;
     final String password = _password.text;
 
-    if (!email.contains('@')) {
+    if (!email.contains('@') && !email.contains('.')) {
+      ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Email format is not correct')));
       return;
     }
     if (password.length < 6) {
+      ScaffoldMessenger.of(context)
+          .showSnackBar(const SnackBar(content: Text('Password is too weak.')));
       return;
     }
     StoreProvider.of<AppState>(context).dispatch(
@@ -104,10 +109,24 @@ class _CreateUserPageState extends State<CreateUserPage> {
                               ),
                               TextField(
                                 controller: _password,
-                                obscureText: true,
+                                obscureText: !_isPasswordVisible,
                                 keyboardType: TextInputType.visiblePassword,
-                                decoration:
-                                    const InputDecoration(hintText: 'Password'),
+                                decoration: InputDecoration(
+                                  hintText: 'Password',
+                                  suffixIcon: IconButton(
+                                    icon: Icon(
+                                      _isPasswordVisible
+                                          ? Icons.visibility
+                                          : Icons.visibility_off,
+                                    ),
+                                    onPressed: () {
+                                      setState(() {
+                                        _isPasswordVisible =
+                                            !_isPasswordVisible;
+                                      });
+                                    },
+                                  ),
+                                ),
                               ),
                             ],
                           ),
