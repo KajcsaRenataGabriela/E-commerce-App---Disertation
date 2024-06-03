@@ -6,6 +6,8 @@ Perks:
 * freezed annotations
 * used analysis_options
 * firebase + firestore
+* CI/CD
+* checkstyle and code analysis
 * pending actions implemented
 * create user + login user + logout
 * products based on categories with vendors
