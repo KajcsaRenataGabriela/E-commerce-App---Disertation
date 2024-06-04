@@ -112,7 +112,7 @@ class _SellersPageState extends State<SellersPage> {
     _vendors = _store.state.products.vendors.toList();
     final Vendor? vendor = _vendors
         .firstWhereOrNull((Vendor element) => element.email == userEmail);
-    if(vendor == null){
+    if (vendor == null) {
       Scaffold(
           appBar: AppBar(
               title: Text(userEmail.substring(

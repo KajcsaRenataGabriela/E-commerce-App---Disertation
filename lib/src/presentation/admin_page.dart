@@ -93,7 +93,8 @@ class _AdminPageState extends State<AdminPage> {
                                                 needingConfirmationVendor
                                                     .description,
                                                 overflow: TextOverflow.ellipsis,
-                                                style: const TextStyle(fontSize: 8),
+                                                style: const TextStyle(
+                                                    fontSize: 8),
                                               ),
                                             ),
                                           ]),
@@ -101,7 +102,7 @@ class _AdminPageState extends State<AdminPage> {
                                   ],
                                 ),
                                 IconButton(
-                                  iconSize: 16,
+                                    iconSize: 16,
                                     icon: const Icon(
                                       Icons.check_box,
                                       color: Colors.pinkAccent,
