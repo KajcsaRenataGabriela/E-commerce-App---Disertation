@@ -62,7 +62,7 @@ class _AdminPageState extends State<AdminPage> {
                         return FittedBox(
                           child: Card(
                             child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              mainAxisAlignment: MainAxisAlignment.end,
                               crossAxisAlignment: CrossAxisAlignment.end,
                               children: <Widget>[
                                 Row(
@@ -70,8 +70,8 @@ class _AdminPageState extends State<AdminPage> {
                                     CachedNetworkImage(
                                       imageUrl: needingConfirmationVendor.image,
                                       fit: BoxFit.scaleDown,
-                                      width: 164.0,
-                                      height: 164.0,
+                                      width: 50.0,
+                                      height: 50.0,
                                     ),
                                     Padding(
                                       padding: const EdgeInsets.only(left: 8),
@@ -82,7 +82,7 @@ class _AdminPageState extends State<AdminPage> {
                                             Text(
                                               needingConfirmationVendor.name,
                                               style: const TextStyle(
-                                                fontSize: 20.0,
+                                                fontSize: 14.0,
                                               ),
                                             ),
                                             const SizedBox(height: 10),
@@ -93,6 +93,7 @@ class _AdminPageState extends State<AdminPage> {
                                                 needingConfirmationVendor
                                                     .description,
                                                 overflow: TextOverflow.ellipsis,
+                                                style: const TextStyle(fontSize: 8),
                                               ),
                                             ),
                                           ]),
@@ -100,6 +101,7 @@ class _AdminPageState extends State<AdminPage> {
                                   ],
                                 ),
                                 IconButton(
+                                  iconSize: 16,
                                     icon: const Icon(
                                       Icons.check_box,
                                       color: Colors.pinkAccent,
@@ -132,6 +134,7 @@ class _AdminPageState extends State<AdminPage> {
                                       }
                                     }),
                                 IconButton(
+                                    iconSize: 16,
                                     icon: const Icon(
                                       Icons.not_interested,
                                       color: Colors.pinkAccent,

@@ -86,9 +86,6 @@ class MyApp extends StatelessWidget {
         ),
         routes: <String, WidgetBuilder>{
           '/': (BuildContext context) {
-            if (store.state.auth.user!.email == 'admin@admin.com') {
-              return const AdminPage();
-            }
             store.dispatch(const ListVendors.start());
             return VendorsContainer(
                 builder: (BuildContext context, List<Vendor> vendors) {
@@ -97,6 +94,9 @@ class MyApp extends StatelessWidget {
                 if (user == null) {
                   return const LoginPage();
                 } else {
+                  if (user.email == 'admin@admin.com') {
+                    return const AdminPage();
+                  }
                   final String currentUserEmail = store.state.auth.user!.email;
                   bool isSeller = false;
                   if (vendors.isNotEmpty) {

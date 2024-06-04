@@ -1,3 +1,4 @@
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux/redux.dart';
@@ -109,9 +110,28 @@ class _SellersPageState extends State<SellersPage> {
   Widget build(BuildContext context) {
     final String userEmail = _store.state.auth.user!.email;
     _vendors = _store.state.products.vendors.toList();
-    final bool isNeedingConfirmation = _vendors
-        .firstWhere((Vendor element) => element.email == userEmail)
-        .isNeedingConfirmation;
+    final Vendor? vendor = _vendors
+        .firstWhereOrNull((Vendor element) => element.email == userEmail);
+    if(vendor == null){
+      Scaffold(
+          appBar: AppBar(
+              title: Text(userEmail.substring(
+                  userEmail.indexOf('@') + 1, userEmail.indexOf('.'))),
+              actions: <Widget>[
+                IconButton(
+                  onPressed: () {
+                    StoreProvider.of<AppState>(context)
+                        .dispatch(const LogoutUserStart());
+                    Navigator.pushReplacementNamed(context, '/login');
+                  },
+                  icon: const Icon(Icons.power_settings_new_sharp),
+                ),
+              ]),
+          body: const Center(
+            child: Text('Company account was rejected by admin'),
+          ));
+    }
+    final bool isNeedingConfirmation = vendor!.isNeedingConfirmation;
     if (isNeedingConfirmation) {
       return Scaffold(
           appBar: AppBar(
