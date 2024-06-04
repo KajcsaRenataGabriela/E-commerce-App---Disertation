@@ -1,28 +1,45 @@
 import 'package:animate_gradient/animate_gradient.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
+import 'package:uuid/uuid.dart';
 
 import '../actions/index.dart';
 import '../models/index.dart';
 import 'containers/index.dart';
 
-class CreateUserPage extends StatefulWidget {
-  const CreateUserPage({super.key});
+class CreateCompanyPage extends StatefulWidget {
+  const CreateCompanyPage({super.key});
 
   @override
-  State<CreateUserPage> createState() => _CreateUserPageState();
+  State<CreateCompanyPage> createState() => _CreateCompanyPageState();
 }
 
-class _CreateUserPageState extends State<CreateUserPage> {
+class _CreateCompanyPageState extends State<CreateCompanyPage> {
   final TextEditingController _email = TextEditingController();
   final TextEditingController _password = TextEditingController();
+  final TextEditingController _name = TextEditingController();
+  final TextEditingController _description = TextEditingController();
+  final TextEditingController _image = TextEditingController();
   bool _isPasswordVisible = false;
-  bool checkedValue = false;
 
   void _onNext() {
     final String email = _email.text;
     final String password = _password.text;
+    final String name = _name.text;
+    final String image = _image.text;
+    final String description = _description.text;
+    const Uuid uuid = Uuid();
+    final String documentId = uuid.v4();
 
+    if (email.isEmpty ||
+        password.isEmpty ||
+        name.isEmpty ||
+        image.isEmpty ||
+        description.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('All fields are required.')));
+      return;
+    }
     if (!email.contains('@') && !email.contains('.')) {
       ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text('Email format is not correct')));
@@ -33,8 +50,28 @@ class _CreateUserPageState extends State<CreateUserPage> {
           .showSnackBar(const SnackBar(content: Text('Password is too weak.')));
       return;
     }
+
+    StoreProvider.of<AppState>(context).dispatch(CreateVendorStart(
+      email: email,
+      id: documentId,
+      name: name,
+      image: image,
+      description: description,
+      isNeedingConfirmation: true,
+      result: _onResultVendor,
+    ));
+
     StoreProvider.of<AppState>(context).dispatch(
         CreateUserStart(email: email, password: password, result: _onResult));
+  }
+
+  void _onResultVendor(dynamic action) {
+    if (action is CreateVendorSuccessful) {
+      return;
+    } else if (action is CreateVendorError) {
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text('${action.error}')));
+    }
   }
 
   void _onResult(dynamic action) {
@@ -130,6 +167,22 @@ class _CreateUserPageState extends State<CreateUserPage> {
                                   ),
                                 ),
                               ),
+                              TextField(
+                                controller: _name,
+                                decoration:
+                                    const InputDecoration(hintText: 'Name'),
+                              ),
+                              TextField(
+                                maxLines: 5,
+                                controller: _description,
+                                decoration: const InputDecoration(
+                                    hintText: 'Description'),
+                              ),
+                              TextField(
+                                controller: _image,
+                                decoration:
+                                    const InputDecoration(hintText: 'LOGO URL'),
+                              ),
                             ],
                           ),
                         ),
@@ -141,10 +194,11 @@ class _CreateUserPageState extends State<CreateUserPage> {
                         else ...<Widget>[
                           FloatingActionButton.extended(
                             label: const Text(
-                              'Sign up TODAY',
+                              'Sign up as COMPANY',
                               style: TextStyle(
                                   fontWeight: FontWeight.bold, fontSize: 24.0),
                             ),
+                            // <-- Text
                             backgroundColor: Colors.pink,
                             icon: const Icon(
                               Icons.ads_click,
@@ -156,6 +210,7 @@ class _CreateUserPageState extends State<CreateUserPage> {
                           const SizedBox(height: 16.0),
                           FloatingActionButton.extended(
                             label: const Text('Go to login'),
+                            // <-- Text
                             backgroundColor: Colors.pink.shade300,
                             icon: const Icon(
                               Icons.login,
@@ -165,20 +220,6 @@ class _CreateUserPageState extends State<CreateUserPage> {
                               Navigator.pushReplacementNamed(context, '/login');
                             },
                             heroTag: 'btn4',
-                          ),
-                          const SizedBox(height: 16.0),
-                          FloatingActionButton.extended(
-                            label: const Text('Sign up as a company'),
-                            backgroundColor: Colors.pink.shade300,
-                            icon: const Icon(
-                              Icons.sell_outlined,
-                              size: 24.0,
-                            ),
-                            onPressed: () {
-                              Navigator.pushReplacementNamed(
-                                  context, '/createCompanyUser');
-                            },
-                            heroTag: 'btn5',
                           ),
                         ]
                       ],

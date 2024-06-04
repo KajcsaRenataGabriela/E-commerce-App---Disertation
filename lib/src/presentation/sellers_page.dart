@@ -107,9 +107,39 @@ class _SellersPageState extends State<SellersPage> {
 
   @override
   Widget build(BuildContext context) {
+    final String userEmail = _store.state.auth.user!.email;
+    _vendors = _store.state.products.vendors.toList();
+    final bool isNeedingConfirmation = _vendors
+        .firstWhere((Vendor element) => element.email == userEmail)
+        .isNeedingConfirmation;
+    if (isNeedingConfirmation) {
+      return Scaffold(
+          appBar: AppBar(
+              title: Text(userEmail.substring(
+                  userEmail.indexOf('@') + 1, userEmail.indexOf('.'))),
+              actions: <Widget>[
+                IconButton(
+                  disabledColor: Colors.grey,
+                  onPressed: () {
+                    Navigator.pushReplacementNamed(context, '/seller');
+                  },
+                  icon: const Icon(Icons.refresh),
+                ),
+                IconButton(
+                  onPressed: () {
+                    StoreProvider.of<AppState>(context)
+                        .dispatch(const LogoutUserStart());
+                    Navigator.pushReplacementNamed(context, '/login');
+                  },
+                  icon: const Icon(Icons.power_settings_new_sharp),
+                ),
+              ]),
+          body: const Center(
+            child: Text('Company account pending confirmation from admin'),
+          ));
+    }
     return CategoriesContainer(
         builder: (BuildContext context, List<Category> categories) {
-      final String userEmail = _store.state.auth.user!.email;
       return Scaffold(
           appBar: AppBar(
               title: Text(userEmail.substring(

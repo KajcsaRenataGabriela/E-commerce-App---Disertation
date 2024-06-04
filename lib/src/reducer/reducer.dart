@@ -7,6 +7,7 @@ import 'auth_reducer.dart';
 import 'orders_reducer.dart';
 import 'products_reducer.dart';
 import 'profiles_reducer.dart';
+import 'vendors_reducer.dart';
 
 Reducer<AppState> reducer = combineReducers(<Reducer<AppState>>[
   _reducer,
@@ -28,6 +29,7 @@ AppState _reducer(AppState state, dynamic action) {
     products: productReducer(state.products, action),
     order: ordersReducer(state.order, action),
     profiles: profileReducer(state.profiles, action),
+    vendors: vendorReducer(state.vendors, action),
   );
 }
 

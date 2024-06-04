@@ -188,9 +188,10 @@ class HomePage extends StatelessWidget {
                                             ),
                                             const SizedBox(height: 10),
                                             Padding(
-                                              padding: const EdgeInsets.all(4.0),
-                                              child:
-                                                  Text('vendor: ${vendor?.name}'),
+                                              padding:
+                                                  const EdgeInsets.all(4.0),
+                                              child: Text(
+                                                  'vendor: ${vendor?.name}'),
                                             ),
                                           ]),
                                     ),
@@ -203,8 +204,8 @@ class HomePage extends StatelessWidget {
                                     ),
                                     onPressed: () {
                                       StoreProvider.of<AppState>(context)
-                                          .dispatch(
-                                              UpdateCart(product.id, add: true));
+                                          .dispatch(UpdateCart(product.id,
+                                              add: true));
                                     }),
                               ],
                             ),

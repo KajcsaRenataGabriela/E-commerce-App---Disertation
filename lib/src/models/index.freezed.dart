@@ -1537,6 +1537,7 @@ mixin _$Vendor {
   String get image => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
+  bool get isNeedingConfirmation => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -1553,7 +1554,8 @@ abstract class $VendorCopyWith<$Res> {
       String name,
       String image,
       String description,
-      String email});
+      String email,
+      bool isNeedingConfirmation});
 }
 
 /// @nodoc
@@ -1574,6 +1576,7 @@ class _$VendorCopyWithImpl<$Res, $Val extends Vendor>
     Object? image = null,
     Object? description = null,
     Object? email = null,
+    Object? isNeedingConfirmation = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -1596,6 +1599,10 @@ class _$VendorCopyWithImpl<$Res, $Val extends Vendor>
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
+      isNeedingConfirmation: null == isNeedingConfirmation
+          ? _value.isNeedingConfirmation
+          : isNeedingConfirmation // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -1611,7 +1618,8 @@ abstract class _$$Vendor$CopyWith<$Res> implements $VendorCopyWith<$Res> {
       String name,
       String image,
       String description,
-      String email});
+      String email,
+      bool isNeedingConfirmation});
 }
 
 /// @nodoc
@@ -1629,6 +1637,7 @@ class __$$Vendor$CopyWithImpl<$Res>
     Object? image = null,
     Object? description = null,
     Object? email = null,
+    Object? isNeedingConfirmation = null,
   }) {
     return _then(_$Vendor$(
       id: null == id
@@ -1651,6 +1660,10 @@ class __$$Vendor$CopyWithImpl<$Res>
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
+      isNeedingConfirmation: null == isNeedingConfirmation
+          ? _value.isNeedingConfirmation
+          : isNeedingConfirmation // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -1663,7 +1676,8 @@ class _$Vendor$ implements Vendor$ {
       required this.name,
       required this.image,
       required this.description,
-      required this.email});
+      required this.email,
+      required this.isNeedingConfirmation});
 
   factory _$Vendor$.fromJson(Map<String, dynamic> json) =>
       _$$Vendor$FromJson(json);
@@ -1679,10 +1693,12 @@ class _$Vendor$ implements Vendor$ {
   final String description;
   @override
   final String email;
+  @override
+  final bool isNeedingConfirmation;
 
   @override
   String toString() {
-    return 'Vendor(id: $id, name: $name, image: $image, description: $description, email: $email)';
+    return 'Vendor(id: $id, name: $name, image: $image, description: $description, email: $email, isNeedingConfirmation: $isNeedingConfirmation)';
   }
 
   @override
@@ -1695,13 +1711,15 @@ class _$Vendor$ implements Vendor$ {
             (identical(other.image, image) || other.image == image) &&
             (identical(other.description, description) ||
                 other.description == description) &&
-            (identical(other.email, email) || other.email == email));
+            (identical(other.email, email) || other.email == email) &&
+            (identical(other.isNeedingConfirmation, isNeedingConfirmation) ||
+                other.isNeedingConfirmation == isNeedingConfirmation));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, name, image, description, email);
+  int get hashCode => Object.hash(
+      runtimeType, id, name, image, description, email, isNeedingConfirmation);
 
   @JsonKey(ignore: true)
   @override
@@ -1723,7 +1741,8 @@ abstract class Vendor$ implements Vendor {
       required final String name,
       required final String image,
       required final String description,
-      required final String email}) = _$Vendor$;
+      required final String email,
+      required final bool isNeedingConfirmation}) = _$Vendor$;
 
   factory Vendor$.fromJson(Map<String, dynamic> json) = _$Vendor$.fromJson;
 
@@ -1739,8 +1758,154 @@ abstract class Vendor$ implements Vendor {
   @override
   String get email;
   @override
+  bool get isNeedingConfirmation;
+  @override
   @JsonKey(ignore: true)
   _$$Vendor$CopyWith<_$Vendor$> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+VendorsState _$VendorsStateFromJson(Map<String, dynamic> json) {
+  return VendorsState$.fromJson(json);
+}
+
+/// @nodoc
+mixin _$VendorsState {
+  List<Vendor> get vendors => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $VendorsStateCopyWith<VendorsState> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $VendorsStateCopyWith<$Res> {
+  factory $VendorsStateCopyWith(
+          VendorsState value, $Res Function(VendorsState) then) =
+      _$VendorsStateCopyWithImpl<$Res, VendorsState>;
+  @useResult
+  $Res call({List<Vendor> vendors});
+}
+
+/// @nodoc
+class _$VendorsStateCopyWithImpl<$Res, $Val extends VendorsState>
+    implements $VendorsStateCopyWith<$Res> {
+  _$VendorsStateCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? vendors = null,
+  }) {
+    return _then(_value.copyWith(
+      vendors: null == vendors
+          ? _value.vendors
+          : vendors // ignore: cast_nullable_to_non_nullable
+              as List<Vendor>,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$VendorsState$CopyWith<$Res>
+    implements $VendorsStateCopyWith<$Res> {
+  factory _$$VendorsState$CopyWith(
+          _$VendorsState$ value, $Res Function(_$VendorsState$) then) =
+      __$$VendorsState$CopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({List<Vendor> vendors});
+}
+
+/// @nodoc
+class __$$VendorsState$CopyWithImpl<$Res>
+    extends _$VendorsStateCopyWithImpl<$Res, _$VendorsState$>
+    implements _$$VendorsState$CopyWith<$Res> {
+  __$$VendorsState$CopyWithImpl(
+      _$VendorsState$ _value, $Res Function(_$VendorsState$) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? vendors = null,
+  }) {
+    return _then(_$VendorsState$(
+      vendors: null == vendors
+          ? _value._vendors
+          : vendors // ignore: cast_nullable_to_non_nullable
+              as List<Vendor>,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$VendorsState$ implements VendorsState$ {
+  const _$VendorsState$({final List<Vendor> vendors = const <Vendor>[]})
+      : _vendors = vendors;
+
+  factory _$VendorsState$.fromJson(Map<String, dynamic> json) =>
+      _$$VendorsState$FromJson(json);
+
+  final List<Vendor> _vendors;
+  @override
+  @JsonKey()
+  List<Vendor> get vendors {
+    if (_vendors is EqualUnmodifiableListView) return _vendors;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_vendors);
+  }
+
+  @override
+  String toString() {
+    return 'VendorsState(vendors: $vendors)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$VendorsState$ &&
+            const DeepCollectionEquality().equals(other._vendors, _vendors));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_vendors));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$VendorsState$CopyWith<_$VendorsState$> get copyWith =>
+      __$$VendorsState$CopyWithImpl<_$VendorsState$>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$VendorsState$ToJson(
+      this,
+    );
+  }
+}
+
+abstract class VendorsState$ implements VendorsState {
+  const factory VendorsState$({final List<Vendor> vendors}) = _$VendorsState$;
+
+  factory VendorsState$.fromJson(Map<String, dynamic> json) =
+      _$VendorsState$.fromJson;
+
+  @override
+  List<Vendor> get vendors;
+  @override
+  @JsonKey(ignore: true)
+  _$$VendorsState$CopyWith<_$VendorsState$> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -2681,6 +2846,7 @@ mixin _$AppState {
   ProductsState get products => throw _privateConstructorUsedError;
   OrdersState get order => throw _privateConstructorUsedError;
   ProfilesState get profiles => throw _privateConstructorUsedError;
+  VendorsState get vendors => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -2698,12 +2864,14 @@ abstract class $AppStateCopyWith<$Res> {
       Set<String> pendingActions,
       ProductsState products,
       OrdersState order,
-      ProfilesState profiles});
+      ProfilesState profiles,
+      VendorsState vendors});
 
   $AuthStateCopyWith<$Res> get auth;
   $ProductsStateCopyWith<$Res> get products;
   $OrdersStateCopyWith<$Res> get order;
   $ProfilesStateCopyWith<$Res> get profiles;
+  $VendorsStateCopyWith<$Res> get vendors;
 }
 
 /// @nodoc
@@ -2724,6 +2892,7 @@ class _$AppStateCopyWithImpl<$Res, $Val extends AppState>
     Object? products = null,
     Object? order = null,
     Object? profiles = null,
+    Object? vendors = null,
   }) {
     return _then(_value.copyWith(
       auth: null == auth
@@ -2746,6 +2915,10 @@ class _$AppStateCopyWithImpl<$Res, $Val extends AppState>
           ? _value.profiles
           : profiles // ignore: cast_nullable_to_non_nullable
               as ProfilesState,
+      vendors: null == vendors
+          ? _value.vendors
+          : vendors // ignore: cast_nullable_to_non_nullable
+              as VendorsState,
     ) as $Val);
   }
 
@@ -2780,6 +2953,14 @@ class _$AppStateCopyWithImpl<$Res, $Val extends AppState>
       return _then(_value.copyWith(profiles: value) as $Val);
     });
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $VendorsStateCopyWith<$Res> get vendors {
+    return $VendorsStateCopyWith<$Res>(_value.vendors, (value) {
+      return _then(_value.copyWith(vendors: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -2794,7 +2975,8 @@ abstract class _$$AppState$CopyWith<$Res> implements $AppStateCopyWith<$Res> {
       Set<String> pendingActions,
       ProductsState products,
       OrdersState order,
-      ProfilesState profiles});
+      ProfilesState profiles,
+      VendorsState vendors});
 
   @override
   $AuthStateCopyWith<$Res> get auth;
@@ -2804,6 +2986,8 @@ abstract class _$$AppState$CopyWith<$Res> implements $AppStateCopyWith<$Res> {
   $OrdersStateCopyWith<$Res> get order;
   @override
   $ProfilesStateCopyWith<$Res> get profiles;
+  @override
+  $VendorsStateCopyWith<$Res> get vendors;
 }
 
 /// @nodoc
@@ -2822,6 +3006,7 @@ class __$$AppState$CopyWithImpl<$Res>
     Object? products = null,
     Object? order = null,
     Object? profiles = null,
+    Object? vendors = null,
   }) {
     return _then(_$AppState$(
       auth: null == auth
@@ -2844,6 +3029,10 @@ class __$$AppState$CopyWithImpl<$Res>
           ? _value.profiles
           : profiles // ignore: cast_nullable_to_non_nullable
               as ProfilesState,
+      vendors: null == vendors
+          ? _value.vendors
+          : vendors // ignore: cast_nullable_to_non_nullable
+              as VendorsState,
     ));
   }
 }
@@ -2856,7 +3045,8 @@ class _$AppState$ implements AppState$ {
       final Set<String> pendingActions = const <String>{},
       this.products = const ProductsState(),
       this.order = const OrdersState(),
-      this.profiles = const ProfilesState()})
+      this.profiles = const ProfilesState(),
+      this.vendors = const VendorsState()})
       : _pendingActions = pendingActions;
 
   factory _$AppState$.fromJson(Map<String, dynamic> json) =>
@@ -2883,10 +3073,13 @@ class _$AppState$ implements AppState$ {
   @override
   @JsonKey()
   final ProfilesState profiles;
+  @override
+  @JsonKey()
+  final VendorsState vendors;
 
   @override
   String toString() {
-    return 'AppState(auth: $auth, pendingActions: $pendingActions, products: $products, order: $order, profiles: $profiles)';
+    return 'AppState(auth: $auth, pendingActions: $pendingActions, products: $products, order: $order, profiles: $profiles, vendors: $vendors)';
   }
 
   @override
@@ -2901,7 +3094,8 @@ class _$AppState$ implements AppState$ {
                 other.products == products) &&
             (identical(other.order, order) || other.order == order) &&
             (identical(other.profiles, profiles) ||
-                other.profiles == profiles));
+                other.profiles == profiles) &&
+            (identical(other.vendors, vendors) || other.vendors == vendors));
   }
 
   @JsonKey(ignore: true)
@@ -2912,7 +3106,8 @@ class _$AppState$ implements AppState$ {
       const DeepCollectionEquality().hash(_pendingActions),
       products,
       order,
-      profiles);
+      profiles,
+      vendors);
 
   @JsonKey(ignore: true)
   @override
@@ -2934,7 +3129,8 @@ abstract class AppState$ implements AppState {
       final Set<String> pendingActions,
       final ProductsState products,
       final OrdersState order,
-      final ProfilesState profiles}) = _$AppState$;
+      final ProfilesState profiles,
+      final VendorsState vendors}) = _$AppState$;
 
   factory AppState$.fromJson(Map<String, dynamic> json) = _$AppState$.fromJson;
 
@@ -2948,6 +3144,8 @@ abstract class AppState$ implements AppState {
   OrdersState get order;
   @override
   ProfilesState get profiles;
+  @override
+  VendorsState get vendors;
   @override
   @JsonKey(ignore: true)
   _$$AppState$CopyWith<_$AppState$> get copyWith =>

@@ -144,6 +144,7 @@ _$Vendor$ _$$Vendor$FromJson(Map<String, dynamic> json) => _$Vendor$(
       image: json['image'] as String,
       description: json['description'] as String,
       email: json['email'] as String,
+      isNeedingConfirmation: json['isNeedingConfirmation'] as bool,
     );
 
 Map<String, dynamic> _$$Vendor$ToJson(_$Vendor$ instance) => <String, dynamic>{
@@ -152,6 +153,20 @@ Map<String, dynamic> _$$Vendor$ToJson(_$Vendor$ instance) => <String, dynamic>{
       'image': instance.image,
       'description': instance.description,
       'email': instance.email,
+      'isNeedingConfirmation': instance.isNeedingConfirmation,
+    };
+
+_$VendorsState$ _$$VendorsState$FromJson(Map<String, dynamic> json) =>
+    _$VendorsState$(
+      vendors: (json['vendors'] as List<dynamic>?)
+              ?.map((e) => Vendor.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          const <Vendor>[],
+    );
+
+Map<String, dynamic> _$$VendorsState$ToJson(_$VendorsState$ instance) =>
+    <String, dynamic>{
+      'vendors': instance.vendors,
     };
 
 _$Order$ _$$Order$FromJson(Map<String, dynamic> json) => _$Order$(
@@ -256,6 +271,9 @@ _$AppState$ _$$AppState$FromJson(Map<String, dynamic> json) => _$AppState$(
       profiles: json['profiles'] == null
           ? const ProfilesState()
           : ProfilesState.fromJson(json['profiles'] as Map<String, dynamic>),
+      vendors: json['vendors'] == null
+          ? const VendorsState()
+          : VendorsState.fromJson(json['vendors'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$AppState$ToJson(_$AppState$ instance) =>
@@ -265,4 +283,5 @@ Map<String, dynamic> _$$AppState$ToJson(_$AppState$ instance) =>
       'products': instance.products,
       'order': instance.order,
       'profiles': instance.profiles,
+      'vendors': instance.vendors,
     };

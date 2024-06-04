@@ -7,6 +7,7 @@ part 'products/products_state.dart';
 part 'products/product.dart';
 part 'products/category.dart';
 part 'products/vendor.dart';
+part 'products/vendors_state.dart';
 part 'orders/order.dart';
 part 'orders/orders_state.dart';
 part 'profile/profile_state.dart';

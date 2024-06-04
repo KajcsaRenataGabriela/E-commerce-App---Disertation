@@ -23,6 +23,10 @@ part 'profiles/generate_profile.dart';
 part 'profiles/generate_voucher.dart';
 part 'profiles/list_vouchers.dart';
 part 'profiles/listen_to_vouchers.dart';
+part 'vendors/create_vendor.dart';
+part 'vendors/confirm_vendor.dart';
+part 'vendors/delete_vendor.dart';
+part 'vendors/list_all_vendors.dart';
 
 abstract class PendingAction {
   String get pendingId;
