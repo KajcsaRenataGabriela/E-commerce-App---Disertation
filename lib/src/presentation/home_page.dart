@@ -154,58 +154,60 @@ class HomePage extends StatelessWidget {
                       final Product product = products[index];
                       final Vendor? vendor = vendors.firstWhereOrNull(
                           (Vendor vendor) => vendor.id == product.vendorId);
-                      return Card(
-                        child: GestureDetector(
-                          onTap: () {
-                            StoreProvider.of<AppState>(context)
-                                .dispatch(SetProduct(product.id));
-                            Navigator.pushNamed(context, '/product');
-                          },
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            crossAxisAlignment: CrossAxisAlignment.end,
-                            children: <Widget>[
-                              Row(
-                                children: <Widget>[
-                                  CachedNetworkImage(
-                                    imageUrl: product.image,
-                                    fit: BoxFit.scaleDown,
-                                    width: 164.0,
-                                    height: 164.0,
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(left: 8),
-                                    child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: <Widget>[
-                                          Text(
-                                            product.title,
-                                            style: const TextStyle(
-                                              fontSize: 20.0,
+                      return FittedBox(
+                        child: Card(
+                          child: GestureDetector(
+                            onTap: () {
+                              StoreProvider.of<AppState>(context)
+                                  .dispatch(SetProduct(product.id));
+                              Navigator.pushNamed(context, '/product');
+                            },
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: <Widget>[
+                                Row(
+                                  children: <Widget>[
+                                    CachedNetworkImage(
+                                      imageUrl: product.image,
+                                      fit: BoxFit.scaleDown,
+                                      width: 164.0,
+                                      height: 164.0,
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.only(left: 6),
+                                      child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: <Widget>[
+                                            Text(
+                                              product.title,
+                                              style: const TextStyle(
+                                                fontSize: 16.0,
+                                              ),
                                             ),
-                                          ),
-                                          const SizedBox(height: 10),
-                                          Padding(
-                                            padding: const EdgeInsets.all(4.0),
-                                            child:
-                                                Text('vendor: ${vendor?.name}'),
-                                          ),
-                                        ]),
-                                  ),
-                                ],
-                              ),
-                              IconButton(
-                                  icon: const Icon(
-                                    Icons.add_shopping_cart_sharp,
-                                    color: Colors.pinkAccent,
-                                  ),
-                                  onPressed: () {
-                                    StoreProvider.of<AppState>(context)
-                                        .dispatch(
-                                            UpdateCart(product.id, add: true));
-                                  }),
-                            ],
+                                            const SizedBox(height: 10),
+                                            Padding(
+                                              padding: const EdgeInsets.all(4.0),
+                                              child:
+                                                  Text('vendor: ${vendor?.name}'),
+                                            ),
+                                          ]),
+                                    ),
+                                  ],
+                                ),
+                                IconButton(
+                                    icon: const Icon(
+                                      Icons.add_shopping_cart_sharp,
+                                      color: Colors.pinkAccent,
+                                    ),
+                                    onPressed: () {
+                                      StoreProvider.of<AppState>(context)
+                                          .dispatch(
+                                              UpdateCart(product.id, add: true));
+                                    }),
+                              ],
+                            ),
                           ),
                         ),
                       );

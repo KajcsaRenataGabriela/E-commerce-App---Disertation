@@ -76,7 +76,7 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Text('Change you password',
+                  Text('Change your password',
                       style: TextStyle(
                           fontSize: 36,
                           fontWeight: FontWeight.bold,
@@ -162,26 +162,6 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
           ],
         ),
       )),
-    );
-  }
-
-  void showNoMailAppsDialog(BuildContext context) {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: const Text('Open Mail App'),
-          content: const Text('No mail apps installed'),
-          actions: <Widget>[
-            TextButton(
-              child: const Text('OK'),
-              onPressed: () {
-                Navigator.pop(context);
-              },
-            )
-          ],
-        );
-      },
     );
   }
 }
