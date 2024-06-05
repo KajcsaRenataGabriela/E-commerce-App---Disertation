@@ -906,9 +906,9 @@ class __$$ProductsState$CopyWithImpl<$Res>
 class _$ProductsState$ implements ProductsState$ {
   const _$ProductsState$(
       {@JsonSerializable(explicitToJson: true)
-      final Map<String, Product> products = const <String, Product>{},
+          final Map<String, Product> products = const <String, Product>{},
       @JsonSerializable(explicitToJson: true)
-      final Map<String, Product> allProducts = const <String, Product>{},
+          final Map<String, Product> allProducts = const <String, Product>{},
       final List<String> productIds = const <String>[],
       final List<String> allProductIds = const <String>[],
       final List<Category> categories = const <Category>[],
@@ -1042,9 +1042,9 @@ class _$ProductsState$ implements ProductsState$ {
 abstract class ProductsState$ implements ProductsState {
   const factory ProductsState$(
       {@JsonSerializable(explicitToJson: true)
-      final Map<String, Product> products,
+          final Map<String, Product> products,
       @JsonSerializable(explicitToJson: true)
-      final Map<String, Product> allProducts,
+          final Map<String, Product> allProducts,
       final List<String> productIds,
       final List<String> allProductIds,
       final List<Category> categories,

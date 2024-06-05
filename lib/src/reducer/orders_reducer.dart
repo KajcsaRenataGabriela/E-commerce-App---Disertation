@@ -15,4 +15,3 @@ OrdersState _onOrderEvent(OrdersState state, OnOrdersEvent action) {
 OrdersState _onAllOrderEvent(OrdersState state, OnAllOrdersEvent action) {
   return state.copyWith(allOrders: action.orders);
 }
-

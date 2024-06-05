@@ -24,10 +24,11 @@ class OrdersEpics implements EpicClass<AppState> {
       Stream<UpdateOrderStatusStart> actions, EpicStore<AppState> store) {
     return actions.flatMap((UpdateOrderStatusStart action) {
       return Stream<void>.value(null)
-          .asyncMap((_) => _api.updateOrderStatus(newStatus: action.newStatus, id: action.id))
+          .asyncMap((_) => _api.updateOrderStatus(
+              newStatus: action.newStatus, id: action.id))
           .mapTo(const UpdateOrderStatus.successful())
           .onErrorReturnWith((Object error, StackTrace stackTrace) =>
-          UpdateOrderStatus.error(error, stackTrace));
+              UpdateOrderStatus.error(error, stackTrace));
     });
   }
 
@@ -74,7 +75,7 @@ class OrdersEpics implements EpicClass<AppState> {
           .takeUntil(actions.whereType<ListenToAllOrdersDone>())
           .map((List<Order$> orders) => ListenToAllOrders.event(orders))
           .onErrorReturnWith((Object error, StackTrace stackTrace) =>
-          ListenToAllOrders.error(error, stackTrace));
+              ListenToAllOrders.error(error, stackTrace));
     });
   }
 }

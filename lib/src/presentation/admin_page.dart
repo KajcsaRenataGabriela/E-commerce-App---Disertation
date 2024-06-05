@@ -35,17 +35,18 @@ class _AdminPageState extends State<AdminPage> {
         appBar: AppBar(
           title: const Text('ADMIN'),
           actions: <Widget>[
-            IconButton(onPressed: () {
-              Navigator.pushNamed(context, '/adminOrders');
-            },
+            IconButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/adminOrders');
+              },
               icon: const Icon(Icons.shopping_cart),
             ),
-            IconButton(onPressed: () {
-              StoreProvider.of<AppState>(context)
-                  .dispatch(const LogoutUserStart());
-              Navigator.pushReplacementNamed(context, '/login');
-            },
-
+            IconButton(
+              onPressed: () {
+                StoreProvider.of<AppState>(context)
+                    .dispatch(const LogoutUserStart());
+                Navigator.pushReplacementNamed(context, '/login');
+              },
               icon: const Icon(Icons.power_settings_new_sharp),
             ),
           ],
@@ -59,7 +60,8 @@ class _AdminPageState extends State<AdminPage> {
                     .where((Vendor vendor) => vendor.isNeedingConfirmation)
                     .toList();
                 if (vendors.isEmpty) {
-                  return const Center(child: Text('No vendors needing confirmation'));
+                  return const Center(
+                      child: Text('No vendors needing confirmation'));
                 } else {
                   return ListView.separated(
                       itemBuilder: (BuildContext context, int index) {

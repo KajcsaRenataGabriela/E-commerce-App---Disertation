@@ -56,8 +56,13 @@ class _AdminOrdersPageState extends State<AdminOrdersPage> {
                             const Spacer(),
                             DropdownButton<String>(
                               value: selectedStatus,
-                              items: <String>['submitted', 'shipped', 'received']
-                                  .map((String status) => DropdownMenuItem<String>(
+                              items: <String>[
+                                'submitted',
+                                'shipped',
+                                'received'
+                              ]
+                                  .map((String status) =>
+                                      DropdownMenuItem<String>(
                                         value: status,
                                         child: Text(status),
                                       ))
@@ -66,15 +71,21 @@ class _AdminOrdersPageState extends State<AdminOrdersPage> {
                                 setState(() {
                                   selectedStatus = newStatus!;
                                 });
-                                StoreProvider.of<AppState>(context)
-                                    .dispatch(UpdateOrderStatusStart(id: order.id, newStatus: selectedStatus));
-                                ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                                  content: Text('Order ${order.id} was updated.'),
+                                StoreProvider.of<AppState>(context).dispatch(
+                                    UpdateOrderStatusStart(
+                                        id: order.id,
+                                        newStatus: selectedStatus));
+                                ScaffoldMessenger.of(context)
+                                    .showSnackBar(SnackBar(
+                                  content:
+                                      Text('Order ${order.id} was updated.'),
                                   backgroundColor: Colors.lightGreen,
                                   duration: const Duration(seconds: 2),
                                 ));
-                                await Future<void>.delayed(const Duration(seconds: 1));
-                                _store.dispatch(const ListenToAllOrders.start());
+                                await Future<void>.delayed(
+                                    const Duration(seconds: 1));
+                                _store
+                                    .dispatch(const ListenToAllOrders.start());
                               },
                               //isExpanded: true,
                             ),
@@ -82,8 +93,9 @@ class _AdminOrdersPageState extends State<AdminOrdersPage> {
                         ),
                         Column(
                           children: order.cart.items.map((CartItem item) {
-                            final Product product =
-                                order.products.firstWhere((Product product) => product.id == item.productId);
+                            final Product product = order.products.firstWhere(
+                                (Product product) =>
+                                    product.id == item.productId);
 
                             return Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -98,7 +110,8 @@ class _AdminOrdersPageState extends State<AdminOrdersPage> {
                                     width: 56.0,
                                   ),
                                   title: Text(product.title),
-                                  trailing: Text('${product.price * item.quantity} lei'),
+                                  trailing: Text(
+                                      '${product.price * item.quantity} lei'),
                                 ),
                               ],
                             );
