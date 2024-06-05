@@ -14,4 +14,5 @@ part 'vendors_container.dart';
 part 'cart_container.dart';
 part 'products_ids_container.dart';
 part 'orders_container.dart';
+part 'all_orders_container.dart';
 part 'vouchers_container.dart';

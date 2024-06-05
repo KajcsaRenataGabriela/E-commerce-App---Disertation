@@ -203,11 +203,16 @@ _$OrdersState$ _$$OrdersState$FromJson(Map<String, dynamic> json) =>
               ?.map((e) => Order.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const <Order>[],
+      allOrders: (json['allOrders'] as List<dynamic>?)
+              ?.map((e) => Order.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          const <Order>[],
     );
 
 Map<String, dynamic> _$$OrdersState$ToJson(_$OrdersState$ instance) =>
     <String, dynamic>{
       'orders': instance.orders,
+      'allOrders': instance.allOrders,
     };
 
 _$ProfilesState$ _$$ProfilesState$FromJson(Map<String, dynamic> json) =>

@@ -11,6 +11,8 @@ part 'auth/update_profile_url.dart';
 part 'auth/update_password.dart';
 part 'orders/submit_order.dart';
 part 'orders/listen_to_orders.dart';
+part 'orders/listen_to_all_orders.dart';
+part 'orders/update_order_status.dart';
 part 'index.freezed.dart';
 part 'products/create_product.dart';
 part 'products/delete_product.dart';

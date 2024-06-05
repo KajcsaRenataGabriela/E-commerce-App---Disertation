@@ -4,6 +4,7 @@ part of '../index.dart';
 class OrdersState with _$OrdersState {
   const factory OrdersState({
     @Default(<Order>[]) List<Order> orders,
+    @Default(<Order>[]) List<Order> allOrders,
   }) = OrdersState$;
 
   factory OrdersState.fromJson(Map<dynamic, dynamic> json) =>

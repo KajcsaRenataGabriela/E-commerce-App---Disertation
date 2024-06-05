@@ -36,4 +36,29 @@ class OrdersApi {
           .toList();
     });
   }
+
+  Stream<List<Order$>> listenToAllOrders() {
+    return _firestore
+        .collection('orders')
+        .orderBy('createdAt', descending: true)
+        .snapshots()
+        .map((QuerySnapshot<Map<String, dynamic>> snapshot) {
+      return snapshot.docs
+          .map((QueryDocumentSnapshot<Map<String, dynamic>> doc) =>
+          Order$.fromJson(doc.data()))
+          .toList();
+    });
+  }
+
+  Future<void> updateOrderStatus(
+      {required String id, required String newStatus}) async {
+    final DocumentReference<Map<String, dynamic>> ref =
+    _firestore.collection('orders').doc(id);
+
+    final Map<String, dynamic> data = <String, dynamic>{
+      'status': newStatus
+    };
+
+    await ref.update(data);
+  }
 }
