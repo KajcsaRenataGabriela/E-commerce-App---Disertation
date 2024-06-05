@@ -20,6 +20,7 @@ Perks:
 * gamification system with points for benefits for loyal customers
 * profile picture change option
 * contact us (direct phone call and direct email)
+* admin role (viewing and updating order status and confirming seller accounts)
 
 Here is a video of the app for VERSION 1:
 
