@@ -36,6 +36,7 @@ class _SellersPageState extends State<SellersPage> {
 
   Future<void> _fetchCategories() async {
     _store.dispatch(const ListCategory.start());
+    _store.dispatch(const ListVendors.start());
     await Future<void>.delayed(const Duration(seconds: 2)); // Simulate a delay
     setState(() {
       _isLoading = false;
@@ -131,7 +132,10 @@ class _SellersPageState extends State<SellersPage> {
             child: Text('Company account was rejected by admin'),
           ));
     }
-    final bool isNeedingConfirmation = vendor!.isNeedingConfirmation;
+    bool isNeedingConfirmation = true;
+    if(vendor!=null){
+      isNeedingConfirmation = vendor.isNeedingConfirmation;
+    }
     if (isNeedingConfirmation) {
       return Scaffold(
           appBar: AppBar(
